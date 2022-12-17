@@ -13,5 +13,25 @@ DROP TABLE IF EXISTS orders CASCADE;
   password VARCHAR(255) NOT NULL
 );
 
+ CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name TEXT NOT NULL,
+  price INTEGER NOT NULL,
+  ingredients TEXT NOT NULL,
+  inventory BOOLEAN NOT NULL DEFAULT TRUE
+);
+
+ CREATE TABLE ordered_items (
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
+  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE
+  quantity INTEGER NOT NULL
+);
 
 
+ CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  order_started TIMESTAMP,
+  order_fulfilled TIMESTAMP,
+  order_status BOOLEAN,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+);
