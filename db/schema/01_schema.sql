@@ -19,6 +19,7 @@ DROP TABLE IF EXISTS orders CASCADE;
   price INTEGER NOT NULL,
   ingredients TEXT,
   inventory BOOLEAN NOT NULL DEFAULT TRUE
+  food_photo_url VARCHAR(255) NOT NULL
 );
 
  CREATE TABLE ordered_items (
