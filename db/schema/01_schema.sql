@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS orders CASCADE;
   id SERIAL PRIMARY KEY NOT NULL,
   name TEXT NOT NULL,
   price INTEGER NOT NULL,
-  ingredients TEXT NOT NULL,
+  ingredients TEXT,
   inventory BOOLEAN NOT NULL DEFAULT TRUE
 );
 
