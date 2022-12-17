@@ -8,11 +8,59 @@ VALUES
 ('VEGETARIAN SPECIAL', 14, 'Mushroom, Olives, Onions, Pineapple, Tomatoes, Green Peppers, Cheese & Tomato Sauce', true, 'https://static.wixstatic.com/media/d744f8_00f58a73314b416caa5b1ed8644c8077~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_00f58a73314b416caa5b1ed8644c8077~mv2.jpg'),
 ('VEGGIE GARLIC', 14, 'Mushrooms, Red Onion, Tomato, Spinach, Green Pepper, Artichoke Heart, Fresh Garlic, White Garlic Sauce', true, 'https://static.wixstatic.com/media/d744f8_b1441926065f44a8a9182207bb670c8f~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_b1441926065f44a8a9182207bb670c8f~mv2.jpg'),
 ('TACO VEGGIE SPECIAL', 14, 'Red Onions, Jalapeno Pepper, Sour Cream, Paneer, Lettuce, Fresh Tomatoes & Cheese', true, 'https://static.wixstatic.com/media/d744f8_cce2eeeaa46b469bb7bb950acd949ab5~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_cce2eeeaa46b469bb7bb950acd949ab5~mv2.jpg'),
-('BUTTER CHICKEN PIZZA', 14, 'Butter Chicken, Mushrooms, Red Onions, Tomato & Butter Chicken sauce', true, 'https://static.wixstatic.com/media/d744f8_88069663a11a4dcab4a706fe128e6c99~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_88069663a11a4dcab4a706fe128e6c99~mv2.jpg'),
-('BBQ CHICKEN PIZZA', 14, 'Roasted BBQ Chicken, Mushrooms, Red Onions, Tomato & BBQ Sauce', true, 'https://static.wixstatic.com/media/d744f8_c233b6c11b644cffaee239213a9a2ba5~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_c233b6c11b644cffaee239213a9a2ba5~mv2.jpg'),
+('BUTTER CHICKEN PIZZA', 14, 'Butter Chickes, Mushrooms, Red Onions, Tomato & Butter Chicken sauce', true, 'https://static.wixstatic.com/media/d744f8_88069663a11a4dcab4a706fe128e6c99~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_88069663a11a4dcab4a706fe128e6c99~mv2.jpg'),
+('BBQ CHICKEN PIZZA', 14, 'Roasted BBQ Chickes, Mushrooms, Red Onions, Tomato & BBQ Sauce', true, 'https://static.wixstatic.com/media/d744f8_c233b6c11b644cffaee239213a9a2ba5~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_c233b6c11b644cffaee239213a9a2ba5~mv2.jpg'),
 ('TROPICAL HAWAIIAN', 14, 'Ham, Tropical Sauce, Cheddar, Bacon, Cheese & Tomato Sauce, Pineapple', true, 'https://static.wixstatic.com/media/d744f8_67ea1b69d5b049858a8682752b6bf5fa~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_67ea1b69d5b049858a8682752b6bf5fa~mv2.jpg'),
 ('HOT WINGS', 14, 'chicken', true, 'https://static.wixstatic.com/media/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg'),
 ('HONEY GARLIC WINGS', 14, 'chicken', true, 'https://static.wixstatic.com/media/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg'),
-('BBQ WINGS', 14, 'chicken', true, 'https://static.wixstatic.com/media/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg'),
+('BBQ WINGS', 14, 'chicken', true, 'https://static.wixstatic.com/media/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg/v1/fill/w_560,h_385,al_c,q_80,enc_auto/d744f8_75a149e2c6184dfdb769112f8483f93f~mv2.jpg');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO users
+(name, email, phone, password)
+VALUES
+('Hungry Hippo', 'h.h@h.com', '1112223333', '123'),
+('Pesky Penguin', 'p@p.com', '2222223333', '123'),
+('Elegant Elephant', 'e@e.com', '3332223333', '123')
+('Krazy Kangaroo', 'k@k.com', '4442223333', '123'),
+('Frog Prince', 'f@f.com', '5552223333', '123');
+
+
+
+
+
+
+
+
+
 
 
