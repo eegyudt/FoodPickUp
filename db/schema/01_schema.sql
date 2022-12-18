@@ -18,13 +18,14 @@ DROP TABLE IF EXISTS orders CASCADE;
   name TEXT NOT NULL,
   price INTEGER NOT NULL,
   ingredients TEXT,
-  inventory BOOLEAN NOT NULL DEFAULT TRUE
+  inventory BOOLEAN NOT NULL DEFAULT TRUE,
+  food_photo_url VARCHAR(255) NOT NULL
 );
 
  CREATE TABLE ordered_items (
   id SERIAL PRIMARY KEY NOT NULL,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
-  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
   quantity INTEGER NOT NULL
 );
 
@@ -34,5 +35,5 @@ DROP TABLE IF EXISTS orders CASCADE;
   order_started TIMESTAMP,
   order_fulfilled TIMESTAMP,
   order_status BOOLEAN,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
