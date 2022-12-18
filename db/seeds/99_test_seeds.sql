@@ -22,7 +22,7 @@ INSERT INTO users
 (name, email, phone, password)
 VALUES
 ('Hungry Hippo', 'h.h@h.com', '1112223333', '123'),
-('Pesky Penguin', 'p@p.com', '2222223333', '123'),
+('Peckish Penguin', 'p@p.com', '2222223333', '123'),
 ('Elegant Elephant', 'e@e.com', '3332223333', '123'),
 ('Krazy Kangaroo', 'k@k.com', '4442223333', '123'),
 ('Frog Prince', 'f@f.com', '5552223333', '123');
