@@ -22,14 +22,6 @@ DROP TABLE IF EXISTS orders CASCADE;
   food_photo_url VARCHAR(255) NOT NULL
 );
 
- CREATE TABLE ordered_items (
-  id SERIAL PRIMARY KEY NOT NULL,
-  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE
-  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE
-  quantity INTEGER NOT NULL
-);
-
-
  CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   order_started TIMESTAMP,
@@ -37,3 +29,11 @@ DROP TABLE IF EXISTS orders CASCADE;
   order_status BOOLEAN,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 );
+
+ CREATE TABLE ordered_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+  quantity INTEGER NOT NULL
+);
+
