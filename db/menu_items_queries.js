@@ -7,7 +7,7 @@ const getMenuItems = () => {
     });
 };
 
-const getMenuItemByID = (id) => {
+const getMenuItemById = (id) => {
   return db.query('SELECT menu_items.* FROM menu_items WHERE menu_items.id = $1;', [id])
     .then((response) => {
     return response.rows[0];
@@ -16,5 +16,5 @@ const getMenuItemByID = (id) => {
 
 module.exports = {
   getMenuItems,
-  getMenuItemByID
+  getMenuItemById
 };
