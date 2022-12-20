@@ -68,6 +68,13 @@ app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 // Note: mount other resources here, using the same pattern above
 
+
+// import the routers
+const menuItemsRouter = require('./routes/menu_items_router');
+
+// user the routers
+app.use('/menu_items', menuItemsRouter);
+
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
