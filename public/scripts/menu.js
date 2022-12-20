@@ -10,8 +10,11 @@ $(() => {
       $menuList.empty();
 
       for(const item of response.foodItem) {
-        $(`<li class="menu">`).text(item.name).appendTo($menuList);
+        $(`<tr class="menu">`).append(`<td>${item.name}</td><td>${item.price}</td><td><input type="button" value='-'/><span>0</span><input type=
+        "button" value="+"/><input type="button" value="Add to Cart"/>`).appendTo($menuList);
       }
+
     });
   });
 });
+
