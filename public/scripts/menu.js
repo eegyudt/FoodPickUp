@@ -1,10 +1,10 @@
 // Client facing scripts here
 $(() => {
 
-    $.ajax({
-      method: 'GET',
-      url: '/api/menu'
-    })
+  $.ajax({
+    method: 'GET',
+    url: '/api/menu'
+  })
     .done((response) => {
       const $menuList = $('#menu');
       $menuList.empty();
@@ -20,31 +20,31 @@ $(() => {
 });
 
 
-const priceCalculate = function (price) {
+const priceCalculate = function(price) {
   // let price = parseInt($(`#price-${index}`).text());
   let subtotal = parseInt($(`#subtotal`).text());
   subtotal += price;
   $(`#subtotal`).text(subtotal);
-}
+};
 
-const qtyAdd = function (element) {
+const qtyAdd = function(element) {
   let index = $(element).attr('id').slice(7);
   let count = parseInt($(`#qty-${index}`).first().text());
-  count++ ;
+  count++;
   $(`#qty-${index}`).first().text(count);
   let price = parseInt($(`#price-${index}`).text());
   priceCalculate(price);
 
 
-}
+};
 
-const qtyMin = function (element) {
+const qtyMin = function(element) {
   let index = $(element).attr('id').slice(7);
   let count = parseInt($(`#qty-${index}`).first().text());
   if (count === 0) {
-    return
+    return;
   }
-  count-- ;
+  count--;
   $(`#qty-${index}`).first().text(count);
   let price = parseInt($(`#price-${index}`).text());
   priceCalculate(-price);
