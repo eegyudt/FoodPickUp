@@ -27,11 +27,14 @@
 
 <body>
   <%- include("partials/_header") %>
-  <h1>menu</h1>
+  <div><h1>menu</h1><input type="button" value="Clear Cart"/></div>
 
   <table id="menu">
 
   </table>
+  <div>
+    <label>Subtotal: $<span id="subtotal">0</span></label><input type="button" value="Checkout" id="checkout"/>
+  </div>
 </body>
 
 </html>
