@@ -6,11 +6,19 @@ const menuItemsQueries = require('../db/menu_items_queries');
 router.get('/', (req, res) => {
   menuItemsQueries.getMenuItems()
     .then((menu_items) => {
-      res.render(menu_items);
-      // res.json(menuItems);
+      res.json(menu_items);
+      // res.render(menu_items);
+      // res.redurect();
     });
-});
+ });
 
 //GET /menu_items/:id
+
+router.get('/id', (req, res) => {
+  menuItemsQueries.getMenuItemById(req.params.id)
+    .then((menu_item) => {
+      res.json(menu_item);
+    });
+});
 
 module.exports = router;
