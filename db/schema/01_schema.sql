@@ -10,7 +10,8 @@ DROP TABLE IF EXISTS orders CASCADE;
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   phone VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  admin BOOLEAN DEFAULT FALSE
 );
 
  CREATE TABLE menu_items (
@@ -24,7 +25,7 @@ DROP TABLE IF EXISTS orders CASCADE;
 
  CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
-  order_started TIMESTAMP,
+  order_started TIMESTAMP DEFAULT NOW(),
   order_fulfilled TIMESTAMP,
   order_status BOOLEAN,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE

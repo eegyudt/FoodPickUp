@@ -2,16 +2,17 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>menu</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+
   <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -19,23 +20,21 @@
   crossorigin="anonymous"/>
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-   <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
+  <script defer src="/scripts/menu.js"></script>
+
+
 </head>
 
 <body>
   <%- include("partials/_header") %>
-  <h1>Have fun! 🥔</h1>
-  <br>
-  <br>
+  <div><h1>menu</h1><input type="button" value="Clear Cart"/></div>
 
+  <table id="menu">
 
-
+  </table>
+  <div>
+    <label>Subtotal: $<span id="subtotal">0</span></label><input type="button" value="Checkout" id="checkout"/>
+  </div>
 </body>
 
 </html>
