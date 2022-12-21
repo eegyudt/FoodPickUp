@@ -12,7 +12,7 @@ $(() => {
       const foodItem = response.foodItem;
       for(const index in foodItem) {
         const item = foodItem[index];
-        $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><span id="qty-${index}">0</span><input type=
+        $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><span name="${index}" id="qty-${index}">0</span><input type=
         "button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>`).appendTo($menuList);
       }
 
