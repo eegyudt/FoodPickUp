@@ -12,7 +12,7 @@ $(() => {
       const foodItem = response.foodItem;
       for(const index in foodItem) {
         const item = foodItem[index];
-        $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><span name="${index}" id="qty-${index}">0</span><input type=
+        $(`<tr class="menu">`).append(`<td>$${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><input readonly name="${item.id}" id="qty-${index}" value="0"/><input type=
         "button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>`).appendTo($menuList);
       }
 
@@ -29,9 +29,9 @@ const priceCalculate = function (price) {
 
 const qtyAdd = function (element) {
   let index = $(element).attr('id').slice(7);
-  let count = parseInt($(`#qty-${index}`).first().text());
+  let count = parseInt($(`#qty-${index}`).first().val());
   count++ ;
-  $(`#qty-${index}`).first().text(count);
+  $(`#qty-${index}`).first().val(count);
   let price = parseInt($(`#price-${index}`).text());
   priceCalculate(price);
 
@@ -40,12 +40,12 @@ const qtyAdd = function (element) {
 
 const qtyMin = function (element) {
   let index = $(element).attr('id').slice(7);
-  let count = parseInt($(`#qty-${index}`).first().text());
+  let count = parseInt($(`#qty-${index}`).first().val());
   if (count === 0) {
     return
   }
   count-- ;
-  $(`#qty-${index}`).first().text(count);
+  $(`#qty-${index}`).first().val(count);
   let price = parseInt($(`#price-${index}`).text());
   priceCalculate(-price);
 }
