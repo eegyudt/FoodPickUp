@@ -28,13 +28,17 @@
 <body>
   <%- include("partials/_header") %>
   <div><h1>menu</h1><input type="button" value="Clear Cart"/></div>
+  <form id="menuForm" method="POST" action="/menu">
 
-  <table id="menu">
 
-  </table>
-  <div>
-    <label>Subtotal: $<span id="subtotal">0</span></label><input type="button" value="Checkout" id="checkout"/>
-  </div>
+    <table id="menu">
+      
+    </table>
+    <div>
+      <label>Subtotal: $<span id="subtotal">0</span></label>
+      <input type="button" value="Checkout" id="checkout"/>
+    </div>
+  </form>
 </body>
 
 </html>
