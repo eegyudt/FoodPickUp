@@ -1,12 +1,4 @@
 // Client facing scripts here
-let express = require('express');
-let bodyParser = require('body-parser');
-let app = express();
-
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
-console.log(urlencodedParser);
-
-
 $(() => {
 
   $.ajax({
@@ -17,25 +9,30 @@ $(() => {
       const $menuList = $('#menu');
       $menuList.empty();
 
-      let foodItem = response.foodItem;
+      const foodItem = response.foodItem;
       for (const index in foodItem) {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><span name="${index}" id="qty-${index}">0</span><input type=
-        "button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>`).appendTo($menuList);
+      "button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>`).appendTo($menuList);
       }
 
     });
 });
 
-app.post('/menu', urlencodedParser, function(req, res) => {
+$(() => {
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/menu'
+  })
+    .done((response) => {
+      
+      let count = parseInt($(`#qty-${index}`).first().text());
+      $(`<tr class="menu">`).append(`count: ${index}`).appendTo($menuList);
 
 
-
-  console.log(req.body);
-  res.render('menu rendering>>>', { data: req.body });
-
+    });
 });
-
 
 const priceCalculate = function(price) {
   // let price = parseInt($(`#price-${index}`).text());
@@ -43,6 +40,9 @@ const priceCalculate = function(price) {
   subtotal += price;
   $(`#subtotal`).text(subtotal);
 };
+
+
+
 
 const qtyAdd = function(element) {
   let index = $(element).attr('id').slice(7);
@@ -66,6 +66,121 @@ const qtyMin = function(element) {
   let price = parseInt($(`#price-${index}`).text());
   priceCalculate(-price);
 };
+
+
+
+
+
+// // Client facing scripts here
+// let express = require('express');
+// let bodyParser = require('body-parser');
+// let app = express();
+
+// let urlencodedParser = bodyParser.urlencoded({ extended: false });
+// console.log(urlencodedParser);
+
+
+// $(() => {
+
+//   $.ajax({
+//     method: 'GET',
+//     url: '/api/menu'
+//   })
+//     .done((response) => {
+//       const $menuList = $('#menu');
+//       $menuList.empty();
+
+//       let foodItem = response.foodItem;
+//       for (const index in foodItem) {
+//         const item = foodItem[index];
+//         $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td><input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/><span name="${index}" id="qty-${index}">0</span><input type=
+//         "button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>`).appendTo($menuList);
+//       }
+
+//     });
+// });
+
+
+
+// // app.post('/menu', urlencodedParser, function(req, res) => {
+
+
+
+// //   console.log(req.body);
+// //   res.render('menu rendering>>>', { data: req.body });
+// //   res.redirect('/review');
+
+// // });
+
+
+// // $(document).ready(function() {
+
+// //   $('form').on('submit', function() {
+
+// //     let item = $('form input');
+// //     let todo = { item: item.val() };
+
+// //     $.ajax({
+// //       type: 'POST',
+// //       url: '/todo',
+// //       data: todo,
+// //       success: function(data) {
+// //         //do something with the data via front-end framework
+// //         location.reload();
+// //       }
+// //     });
+
+// //     return false;
+
+// //   });
+
+// //   $('li').on('click', function() {
+// //     let item = $(this).text().replace(/ /g, "-");
+// //     $.ajax({
+// //       type: 'DELETE',
+// //       url: '/todo/' + item,
+// //       success: function(data) {
+// //         //do something with the data via front-end framework
+// //         location.reload();
+// //       }
+// //     });
+// //   });
+
+// // });
+
+
+
+// const priceCalculate = function(price) {
+//   // let price = parseInt($(`#price-${index}`).text());
+//   let subtotal = parseInt($(`#subtotal`).text());
+//   subtotal += price;
+//   $(`#subtotal`).text(subtotal);
+// };
+
+// let count;
+
+// const qtyAdd = function(element) {
+//   let index = $(element).attr('id').slice(7);
+//   count = parseInt($(`#qty-${index}`).first().text());
+//   count++;
+//   $(`#qty-${index}`).first().text(count);
+//   let price = parseInt($(`#price-${index}`).text());
+//   priceCalculate(price);
+
+
+// };
+
+// const qtyMin = function(element) {
+//   let index = $(element).attr('id').slice(7);
+//   count = parseInt($(`#qty-${index}`).first().text());
+//   if (count === 0) {
+//     return;
+//   }
+//   count--;
+//   $(`#qty-${index}`).first().text(count);
+//   let price = parseInt($(`#price-${index}`).text());
+//   priceCalculate(-price);
+// };
 
 
 // //login route - POST
