@@ -34,7 +34,6 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
 const checkoutRoutes = require('./routes/checkout');
-const reviewRoutes = require('./routes/review');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
