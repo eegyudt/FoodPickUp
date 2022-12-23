@@ -12,4 +12,10 @@ router.get('/', (req, res) => {
   res.render('review');
 });
 
+router.post('/',(req, res) => {
+  console.log({data: req.body});
+
+  res.render('Confimration', {data: req.body});
+});
+
 module.exports = router;
