@@ -12,4 +12,10 @@ router.get('/', (req, res) => {
   res.render('menu');
 });
 
+router.post('/',(req, res) => {
+  console.log({data: req.body});
+
+  res.render('checkout', {data: req.body});
+});
+
 module.exports = router;
