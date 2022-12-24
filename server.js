@@ -6,6 +6,7 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 
+
 const PORT = process.env.PORT || 8080;
 const app = express();
 
@@ -34,6 +35,8 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
 const checkoutRoutes = require('./routes/checkout');
+const registerRoutes = require('./routes/register');
+const loginRoutes = require('./routes/login');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -44,6 +47,8 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/menu', menuRoutes);
 app.use('/checkout', checkoutRoutes);
+app.use('/register', registerRoutes);
+app.use('/login', loginRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -57,3 +62,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
