@@ -5,48 +5,74 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+
 const express = require('express');
-const router = express.Router();
+const router  = express.Router();
+const bcrypt = require("bcryptjs");
+const db = require('../db/connection');
+
 
 router.get('/', (req, res) => {
   res.render('menu');
 });
 
-router.post('/', (req, res) => {
-  // const userId = req.session.userId;
-  console.log({ data: req.body });
-  const pendingItems = req.body;
-  
-  console.log(pendingItems);
-  for (let key in pendingItems) {
-    if (pendingItems[key]) {
-     const insertPendingOrder = {
-      text: `INSERT INTO ordered_items (menu_id, quantity); VALUES ()`,
-      values: []
-     };
-      console.log(pendingItems[key]);
-      
-    }
-  }
-  // 'INSERT INTO ordered_items
-  //   (order_id, menu_id, quantity);
-  // VALUES
-  //   (1, 1, 1),
-  //   (1, 4, 1),
-  //   (1, 5, 1),
-  //   (2, 2, 3),
-  //   (2, 3, 3),
-  //   (2, 4, 3),
-  //   (2, 5, 3),
-  //   (3, 1, 3),
-  //   (3, 3, 1),
-  //   (3, 9, 1),
-  //   (4, 6, 1),
-  //   (4, 7, 1),
-  //   (4, 8, 2)'
+router.post('/',(req, res) => {
+  console.log({data: req.body});
 
+  res.render('checkout', {data: req.body});
 
-  res.render('checkout', { data: req.body });
 });
 
 module.exports = router;
+// router.get('/', (req, res) => { //???? do we need this here to access db???
+//   foodItemQueries.getFoodItem()
+//     .then(foodItem => {
+//       res.json({ foodItem });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
+
+
+// router.post('/', (req, res) => {
+//   // const userId = req.session.userId;
+//   // const foodItem = response.foodItem;
+//   console.log({ data: req.body });
+//   const pendingItems = req.body;
+//   const pendingItemsArray = [];
+//   console.log(pendingItems);
+
+//   for (let key in pendingItems) {
+
+//     if (pendingItems[key]) {
+//       //  const insertPendingOrder = {
+//       //   text: `INSERT INTO ordered_items (menu_id, quantity); VALUES ()`,
+//       //   values: []
+//       //  };
+//       // console.log(pendingItems[key]);
+//       pendingItemsArray.push(pendingItems[key]);
+//     }
+//   }
+
+//   for (let index in pendingItemsArray) {
+
+//     const item = foodItem[index];
+//     if ($(`#qty-${index}`) > 0) {
+//       // $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td>$(`#qty-${index}`)<input type="submit" value="Submit Order" id="submit">`).appendTo($orderBox);
+
+//         $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>$${item.price}</td><td>`).appendTo($menuList);
+//     }
+//   }
+
+
+//   console.log(pendingItemsArray);
+
+
+
+
+//   // res.render('checkout', { data: pendingItemsArray });
+//   // res.redirect('/checkout');
+// });
