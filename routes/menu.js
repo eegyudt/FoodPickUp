@@ -7,21 +7,60 @@
 
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
+const foodItemQueries = require('../db/queries/foodItem');
 
 
 router.get('/', (req, res) => {
   res.render('menu');
 });
 
-router.post('/',(req, res) => {
-  console.log({data: req.body});
+// router.post('/', (req, res) => {
+//   console.log({ data: req.body });
 
-  res.render('checkout', {data: req.body});
+
+
+//   res.render('checkout', { data: req.body });
+// });
+
+
+
+router.post('/', (req, res) => {
+  console.log({ data: req.body });
+
+  // const dataObject
+
+  const pendingItems = req.body;
+  const pendingItemsArray = [];
+  let pendingFoodItems = [];
+  console.log(pendingItems);
+
+  Object.entries(pendingItems).filter(([key, value]) => value !== '0')
+    .forEach(([key, value]) => pendingItemsArray.push(key));
+  console.log("pendingItemsArray>>>>>>>>>>>>>>>>>>>", pendingItemsArray);
+
+  foodItemQueries.getFoodItemWithId(pendingItemsArray)
+    .then(foodItem => {
+      console.log("foodItem>>>>>>>>>>>>>>>>", foodItem);
+      res.json({ foodItem });
+      pendingFoodItems = foodItem;
+      console.log("pendingFoodItems???????????", pendingFoodItems);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+  
+  res.render('checkout', { data: pendingFoodItems });
+
 
 });
+
+
 
 module.exports = router;
 // router.get('/', (req, res) => { //???? do we need this here to access db???
