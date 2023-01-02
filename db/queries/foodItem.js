@@ -9,7 +9,7 @@ const getFoodItem = () => {
 
 const getFoodItemWithId = (ids) => {
   const formattedIds = `(${ids.toString()})`;
-  return db.query(`SELECT name, price, ingredients FROM menu_items WHERE id in ${formattedIds};`)
+  return db.query(`SELECT id, name, price, ingredients FROM menu_items WHERE id in ${formattedIds};`)
     .then(data => {
       return data.rows;
     });

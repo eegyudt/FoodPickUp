@@ -33,10 +33,11 @@
     
 
     <div>Checkout page!!!</div>
-    <div><% for (item of pendingFoodItems){ %>
+    <div><% for (item of pendingItemsWithQuantity){ %>
       <div> <%= item.name %> </div>"
       <div> <%= item.price %> </div>
       <div> <%= item.ingredients %> </div>
+      <div> <%= item.quantity %> </div>
       <% } %>
     </div>
   </table>

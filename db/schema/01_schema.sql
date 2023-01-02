@@ -39,12 +39,12 @@ DROP TABLE IF EXISTS pending_order CASCADE;
   quantity INTEGER NOT NULL
 );
 
-CREATE TABLE pending_order (
-  id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
-  -- order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
-  menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
-  quantity INTEGER NOT NULL
-);
+-- CREATE TABLE pending_order (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+--   -- order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
+--   menu_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+--   quantity INTEGER NOT NULL
+-- );
 
 
