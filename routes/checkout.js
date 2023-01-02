@@ -11,6 +11,7 @@ checkoutRoutes.post('/', (req, res) => {
   const pendingItemsArray = [];
   let pendingFoodItems = [];
   console.log("pendingItems?????????????", pendingItems);
+  console.log("pendingItems?????????????", pendingItems);
 
   Object.entries(pendingItems).filter(([key, value]) => value !== '0')
     .forEach(([key, value]) => pendingItemsArray.push(key));
@@ -32,12 +33,24 @@ checkoutRoutes.post('/', (req, res) => {
 
 
       res.render('checkout.ejs', { pendingItemsWithQuantity });
+
+      const pendingItemsWithQuantity = foodItem.map((item) => ({
+        ...item,
+        quantity: pendingItems[item.id],
+      }));
+
+
+      console.log("pendingItemsWithQuantity] ! ! ! ! !", pendingItemsWithQuantity);
+
+
+      res.render('checkout.ejs', { pendingItemsWithQuantity });
     })
     .catch(err => {
       res
         .status(500)
         .json({ error: err.message });
     });
+
 
 });
 

@@ -14,12 +14,14 @@ $(() => {
       for (const index in foodItem) {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`
-        <td>${item.name}</td>
+        <td>${item.name}<div>${item.ingredients}</div></td>
         <td id=price-${index}>${item.price}</td>
-        <td>
+        <td><div>
         <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
         <input readonly name="${item.id}" id="qty-${index}" value="0"/>
-        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/></td>`).appendTo($menuList);
+        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+        </div></td>
+        `).appendTo($menuList);
       }
 
     });
@@ -39,7 +41,7 @@ const qtyAdd = function(element) {
   count++;
   $(`#qty-${index}`).first().val(count);
   let price = parseInt($(`#price-${index}`).text());
-  
+
   console.log("price>>>", $(`#price-${index}`).text());
   priceCalculate(price);
 
