@@ -31,10 +31,14 @@
 
   <table id="checkout">
     
-    <% console.log("data???????????????", JSON.stringify(data)) %>
-    <% console.log('test!!!!!!!!!!') %>
 
     <div>Checkout page!!!</div>
+    <div><% for (item of pendingFoodItems){ %>
+      <div> <%= item.name %> </div>"
+      <div> <%= item.price %> </div>
+      <div> <%= item.ingredients %> </div>
+      <% } %>
+    </div>
   </table>
   <!-- <div>
     <label>Subtotal: $<span id="subtotal">0</span></label><input type="button" value="Checkout" id="checkout"/>

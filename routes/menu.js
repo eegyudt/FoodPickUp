@@ -7,17 +7,17 @@
 
 
 const express = require('express');
-const router = express.Router();
+const menuRoutes = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 
 
-router.get('/', (req, res) => {
+menuRoutes.get('/', (req, res) => {
   res.render('menu');
 });
 
-// router.post('/', (req, res) => {
+// menuRoutes.post('/', (req, res) => {
 //   console.log({ data: req.body });
 
 
@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
 
 
 
-router.post('/', (req, res) => {
+menuRoutes.post('/', (req, res) => {
   console.log({ data: req.body });
 
   // const dataObject
@@ -44,8 +44,9 @@ router.post('/', (req, res) => {
   foodItemQueries.getFoodItemWithId(pendingItemsArray)
     .then(foodItem => {
       console.log("foodItem>>>>>>>>>>>>>>>>", foodItem);
-      res.json({ foodItem });
+      // res.json({ foodItem });
       pendingFoodItems = foodItem;
+      res.render('checkout.ejs', { pendingFoodItems });
       console.log("pendingFoodItems???????????", pendingFoodItems);
     })
     .catch(err => {
@@ -55,14 +56,13 @@ router.post('/', (req, res) => {
     });
 
   
-  res.render('checkout', { data: pendingFoodItems });
 
 
 });
 
 
 
-module.exports = router;
+module.exports = menuRoutes;
 // router.get('/', (req, res) => { //???? do we need this here to access db???
 //   foodItemQueries.getFoodItem()
 //     .then(foodItem => {
