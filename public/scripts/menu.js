@@ -14,7 +14,7 @@ $(() => {
       for (const index in foodItem) {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`
-        <td>${item.name}</td>
+        <td>${item.name}<div>${item.ingredients}</div></td>
         <td id=price-${index}>${item.price}</td>
         <td>
         <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
