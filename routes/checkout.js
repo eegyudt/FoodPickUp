@@ -3,6 +3,7 @@ const checkoutRoutes = express.Router();
 // const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
+const selectCartItems = require('../db/selectCartItemsWithId');
 
 let pendingItemsWithQuantity = [];
 
@@ -32,8 +33,19 @@ checkoutRoutes.post('/', (req, res) => {
       console.log("pendingItemsWithQuantity", pendingItemsWithQuantity);
 
 
-      let userId = 1;
-     
+      // STRETCH???? NOT IMPLEMENTED YET
+      // selectCartItems.selectCartItemsWithId(userId)
+      // .then(cartItem => {
+      //   if (cartItem) {
+      //     alert("You already have a pending order");
+      //     res.redirect('/checkout');
+      //   }
+      // });
+      
+      
+      let userId = 4;
+
+
       for (let item of pendingItemsWithQuantity) {
         console.log(item.name);
         db.query(

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>menu</title>
+  <title>Checkout</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,8 @@
 <body>
   <%- include("partials/_header") %>
     <div>
-      <h1>menu</h1><input type="button" value="Clear Cart" />
+      <h1>Checkout</h1>
+      <a class="clearCart" href="/menu">Clear Cart</a>
     </div>
 
     <table id="checkout">
@@ -44,7 +45,7 @@
               Ingredients: <%= item.ingredients %>
             </div>
             <div>
-              Quantity: $<%= item.quantity %>
+              Quantity: <%= item.quantity %>
             </div>
             <label>
               <% subtotal=subtotal + item.price*item.quantity; %>

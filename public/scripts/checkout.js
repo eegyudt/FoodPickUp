@@ -18,6 +18,7 @@ $(document).ready(function() {
 
   $("#submitButton").click(function() {
     $( ".buttonContainer" ).empty();
+    $( ".clearCart" ).empty();
     $( ".SuccessMessage" ).append("Order successfully placed!");
   });
 
