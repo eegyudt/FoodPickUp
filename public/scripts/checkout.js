@@ -1,24 +1,16 @@
 
-const placeOrder = () => {
-  $.ajax({
-    method: 'POST',
-    url: '/api/checkout'
-  })
-    .done((response) => {
-      
+// const placeOrder = () => {
+//   $.ajax({
+//     method: 'POST',
+//     url: '/api/checkout'
+//   })
+//     .done((response) => {
+
+//       // const orderInfo = pendingItemsWithQuantity;
 
 
-  //     const output = "Order placed. We'll text you the orderconfirmation in a couple of minutes.";
-  // //       submitButton.addEventListener('click', () => {
-  //       // 👇️ hide button
-  //   submitButton.style.display = 'none';
-  
-  //       // 👇️ show div
-  //   const box = document.getElementById('box');
-  //   box.style.display = 'block';
-  });
 
-  }
+
     
 // eslint-disable-next-line no-undef
 $(document).ready(function() {
