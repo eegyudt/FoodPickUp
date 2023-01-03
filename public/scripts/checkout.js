@@ -1,11 +1,76 @@
+
+const placeOrder = () => {
+  $.ajax({
+    method: 'POST',
+    url: '/api/checkout'
+  })
+    .done((response) => {
+      
+
+
+  //     const output = "Order placed. We'll text you the orderconfirmation in a couple of minutes.";
+  // //       submitButton.addEventListener('click', () => {
+  //       // 👇️ hide button
+  //   submitButton.style.display = 'none';
+  
+  //       // 👇️ show div
+  //   const box = document.getElementById('box');
+  //   box.style.display = 'block';
+  });
+
+  }
+    
+// eslint-disable-next-line no-undef
+$(document).ready(function() {
+ 
+
+  $("#submitButton").click(function() {
+    $( ".buttonContainer" ).empty();
+    $( ".SuccessMessage" ).append("Order successfully placed!");
+  });
+
+})
+
+
+
+
+
+
+// $(document).on("click", ".submitButton", function(){
+//   alert("The button is clicked in Ajax content!!");
+// }); 
+
+// $(document).ready(function() {
+//   $("#button_1").click(function(e) {
+//     e.preventDefault();
+//     $.ajax({
+//       type: "POST",
+//       url: "/checkout/",
+//       data: {
+//         id: $("#button_1").val(),
+//         access_token: $("#access_token").val()
+//       },
+//       success: function(result) {
+//         alert('ok');
+//       },
+//       error: function(result) {
+//         alert('error');
+//       }
+//     });
+//   });
+
+
+
 // $(() => {
 
 //   $.ajax({
-//     method: 'GET',
+//     method: 'POST',
 //     url: '/api/checkout'
 //   })
 //   .done((response) => {
 //     console.log(response);
+    
+    
 //     // const $menuList = $('#menu');
 //     // $menuList.empty();
 

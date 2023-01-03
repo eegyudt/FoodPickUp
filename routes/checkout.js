@@ -4,6 +4,8 @@ const checkoutRoutes = express.Router();
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 
+let pendingItemsWithQuantity = [];
+
 checkoutRoutes.post('/', (req, res) => {
   console.log({ data: req.body });
 
@@ -22,16 +24,12 @@ checkoutRoutes.post('/', (req, res) => {
       // res.json({ foodItem });
       pendingFoodItems = foodItem;
 
-      const pendingItemsWithQuantity = foodItem.map((item) => ({
+      pendingItemsWithQuantity = foodItem.map((item) => ({
         ...item,
         quantity: pendingItems[item.id],
       }));
 
-
-      console.log("pendingItemsWithQuantity] ! ! ! ! !", pendingItemsWithQuantity);
-
-
-      res.render('checkout.ejs', { pendingItemsWithQuantity });
+      res.redirect('/checkout');
     })
     .catch(err => {
       res
@@ -41,5 +39,13 @@ checkoutRoutes.post('/', (req, res) => {
 
 });
 
+
+checkoutRoutes.get('/', (req, res) => {
+
+
+  res.render('checkout.ejs', { pendingItemsWithQuantity });
+
+
+});
 
 module.exports = checkoutRoutes;

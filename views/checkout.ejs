@@ -17,7 +17,7 @@
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="../routes/checkout.js"></script>
+  <script defer src="/scripts/checkout.js"></script>
 
 
 </head>
@@ -49,14 +49,17 @@
             <label>
               <% subtotal=subtotal + item.price*item.quantity; %>
             </label>
-              <% } %>
-              <div>Total: $<%= subtotal %></div>
+            <% } %>
+              <div>Total: $<%= subtotal %>
+              </div>
       </div>
     </table>
-    
-    <div></div>
-    <input type="button" value="Submit order" id="checkout" />
-    </div> -->
-</body>
+
+    <div class="buttonContainer">
+      <input type="button" id="submitButton" value="Submit order" />
+    </div>
+    <div class="SuccessMessage"></div>
+  
+  </body>
 
 </html>
