@@ -10,8 +10,9 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <!-- <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" /> -->
+  <link rel="stylesheet" href="/styles/checkout.css" />
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
@@ -24,6 +25,7 @@
 
 <body>
   <%- include("partials/_header") %>
+  <div class='checkout_page'>
     <div>
       <h1>Checkout</h1>
       <a class="clearCart" href="/menu">Clear Cart</a>
@@ -60,7 +62,7 @@
       <input type="button" id="submitButton" value="Submit order" />
     </div>
     <div class="SuccessMessage"></div>
-  
-  </body>
+  </div>
+</body>
 
 </html>

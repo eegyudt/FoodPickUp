@@ -19,55 +19,51 @@ router.post('/', (req, res) => {
 
   let errors = [];
 
-  if (!email || !password) {
+  if (!email || !pw) {
     errors.push({ message: " Please enter all fields" });
   }
 
   if (errors.length > 0) {
     res.render('login', { errors });
   } else {
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = bcrypt.hashSync(pw, 10);
     console.log(hashedPassword);
 
-    db.query(
-      `SELECT * FROM users
-      WHERE email = $1`, [email], (err, results) => {
+    db.query(`SELECT * FROM users WHERE email = $1`, [email], (err, results) => {
       if (err) {
         throw err;
       }
       console.log(results.rows);
 
-      if (results.rows.length > 0) {
-        errors.push({ message: "Email not registered! ???" });
-        res.render("login", { errors });
-      } else {
-        db.query(
-          `SELECT name, email, password, admin FROM users
-          WHERE email = $1
-          `, [name, email, password, admin], (err, results) => {
-          if (err) {
-            throw err;
-          }
-
-          const hashedPassword = bcrypt.hashSync(pw, 10);
-
-          if (hashedPassword != pw) {
-            errors.push({ message: "Incorrect login information! ???" });
-            res.render("login", { errors });
-          }
-
-          let userID = name;
-
-          console.log(results.rows);
-          res.redirect('/menu');
-          // return name;
+      db.query(`SELECT email, password, admin FROM users WHERE email = $1`, [email], (err, results) => {
+        if (err) {
+          throw err;
         }
-        );
+        console.log("results--------------", results);
+        console.log("results.rows--------------", results.rows);
+        console.log("results.rows[0]--------------", results.rows[0]);
+        console.log("results.rows[0].email--------------", results.rows[0].email);
+        console.log("results.rows[0].password--------------", results.rows[0].password);
+
+        const hashedPassword = bcrypt.hashSync(pw, 10);
+        console.log("hashedPassword+++++++++++++++", hashedPassword);
+
+        if (hashedPassword != pw) {
+          errors.push({ message: "Incorrect login information! ???" });
+          res.render("login", { errors });
+        }
+
+
+        console.log(results.rows);
+        res.redirect('/menu');
+        // return name;
       }
+      );
     }
     );
   }
 });
+
 
 
 module.exports = router;
