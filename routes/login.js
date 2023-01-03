@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
   const user_id = req.session['user_id'];
 
   if (user_id) {
-    return res.redirect('/urls');
+    return res.redirect('/menu');
   }
   res.render("login");
 });
@@ -55,16 +55,16 @@ router.post('/', (req, res) => {
     }
 
     if (!bcrypt.compareSync(pw, results.rows[0].password)) {
-      return res.status(400).send(`<h1>Email or password is incorrect!<h1> <a href ="/login">Back to Login</a>`);
+      errors.push({ message: "Incorrect login information!" });
+      res.render("login", { errors });
     }
 
-    // const hashedPassword = bcrypt.hashSync(pw, 10);
-    // console.log("hashedPassword+++++++++++++++", hashedPassword);
+    if (results.rows[0].admin === true) {
+      res.redirect('/admin');
 
-    // if (hashedPassword != pw) {
-    //   errors.push({ message: "Incorrect login information!" });
-    //   res.render("login", { errors });
-    // }
+    }
+
+
     const user_id = results.rows[0].id;
     req.session.user_id = user_id;
     res.redirect('/menu');

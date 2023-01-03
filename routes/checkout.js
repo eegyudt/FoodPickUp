@@ -55,9 +55,9 @@ checkoutRoutes.post('/', (req, res) => {
 
 
 checkoutRoutes.get('/', (req, res) => {
-  const user = users[user_id];
-  const templateVars = { user };
-  res.render("urls_new", templateVars);
+  // const user = users[user_id];
+  // const templateVars = { user };
+  // res.render("urls_new", templateVars);
   res.render('checkout.ejs', { pendingItemsWithQuantity });
 
 });
