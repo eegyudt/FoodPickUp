@@ -1,11 +1,15 @@
 // load .env data into process.env
 require('dotenv').config();
 
+const {getUserbyId} = require("./helper");
+
+
 // Web server config
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
+const db = require('./db/connection');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -69,8 +73,18 @@ app.use('/logout', logoutRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+
+  const userId = req.session['user_id'];
+
+  getUserbyId(userId)
+  .then ((user) => {
+
+    const templateVars = { user };
+    res.render('index', templateVars );
+
+  })
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

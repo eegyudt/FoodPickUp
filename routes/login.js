@@ -2,16 +2,21 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
-
+const {getUserbyId} = require("../helper");
 
 router.get('/', (req, res) => {
-  // res.render('login');
-  const user_id = req.session['user_id'];
 
-  if (user_id) {
+  const userId = req.session['user_id'];
+  if (userId) {
     return res.redirect('/menu');
   }
-  res.render("login");
+  getUserbyId(userId)
+  .then ((user) => {
+
+    const templateVars = { user };
+    res.render('login', templateVars );
+
+  })
 });
 
 router.post('/', (req, res) => {

@@ -55,10 +55,21 @@ checkoutRoutes.post('/', (req, res) => {
 
 
 checkoutRoutes.get('/', (req, res) => {
+  const userId = req.session['user_id'];
+  let userName = "";
+  db.query(`SELECT id, email, password, admin FROM users WHERE id = $1`, [userId], (err, results) => {
+    if (err) {
+      throw err;
+    }
+    userName = results.rows[0].name;
+    console.log(userName);
+  })
+  const userObj = {userId, userName: results.rows[0].name };
+
   // const user = users[user_id];
   // const templateVars = { user };
   // res.render("urls_new", templateVars);
-  res.render('checkout.ejs', { pendingItemsWithQuantity });
+  res.render('checkout.ejs', { pendingItemsWithQuantity, userObj });
 
 });
 

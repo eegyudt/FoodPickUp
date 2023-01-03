@@ -19,6 +19,27 @@
       <div>
         <a href="/logout">Log out</a>
       </div>
+      <br>
+      <div>
+        <% if(user.id){ %>
+                <div>
+                  <h5 align="left">Logged in as: <%= user.name %>!</h1>
+                </div>
+
+                <div>
+                  <div>
+                    <form method="POST" action="/logout">
+                      <button type="submit" class="btn btn-danger">Logout </button>
+                    </form>
+                  </div>
+                </div>
+                <% } else{ %>
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/login">Login</a>
+                    <a class="nav-item nav-link" href="/register">Register</a>
+                  </div>
+                  <% } %>
+          </div>
     </div>
 
   </nav>
