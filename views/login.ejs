@@ -14,15 +14,15 @@
   <%- include('partials/_header') %>
     <h1>Log into Your Account</h1>
 
-    <ul>
+    <div>
       <% if (typeof errors !="undefined" ) { %>
         <% errors.forEach(error=> { %>
-          <li>
+          <div class="'error_message">
             <%= error.message %>
-          </li>
+          </div>
           <% }) %>
             <% } %>
-    </ul>
+        </div>
 
     <form method="POST" action="/login">
       <div>
