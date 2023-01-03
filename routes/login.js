@@ -2,14 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
-const cookieSession = require('cookie-session');
 
-router.use(cookieSession({
-  name: 'user_id',
-  keys: ['user_id'],
-  // Cookies expire in 24 hours
-  maxAge: 24 * 60 * 60 * 1000
-}));
 
 router.get('/', (req, res) => {
   // res.render('login');
