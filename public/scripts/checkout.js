@@ -1,12 +1,6 @@
 
-// const placeOrder = () => {
-//   $.ajax({
-//     method: 'POST',
-//     url: '/api/checkout'
-//   })
-//     .done((response) => {
 
-//       // const orderInfo = pendingItemsWithQuantity;
+      // const orderInfo = pendingItemsWithQuantity;
 
 
 
@@ -16,14 +10,23 @@
 $(document).ready(function() {
  
 
-  $("#submitButton").click(function() {
+
+   
+    $("#submitButton").click(function() {
+      $.ajax({
+        method: 'POST',
+        url: '/checkout/payment'
+      })
+        .done((response) => {
     $( ".buttonContainer" ).empty();
     $( ".clearCart" ).empty();
-    $( ".SuccessMessage" ).append("Order successfully placed!");
+    $( "#checkout_title" ).append("Order Summary");
+    $( ".successMessage1" ).append("Order successfully placed!");
+    $( ".successMessage2" ).append("We'll text you in a couple of minutes with your order confirmation!");
+
+        
   });
-
-})
-
+ })});
 
 
 

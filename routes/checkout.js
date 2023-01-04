@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const checkoutRoutes = express.Router();
 const db = require('../db/connection');
@@ -19,12 +20,20 @@ checkoutRoutes.post('/', (req, res) => {
   }
 
   const pendingItems = req.body;
+
+
   const pendingItemsArray = [];
 
   Object.entries(pendingItems).filter(([key, value]) => value !== '0')
     .forEach(([key, value]) => pendingItemsArray.push(key));
-  // console.log("pendingItemsArray>>>>>>>>>>>>>>>>>>>", pendingItemsArray);
+  console.log("pendingItemsArray>>>>>>>>>>>>>>>>>>>", pendingItemsArray);
 
+  // if (pendingItemsArray.length === 0) {
+  //   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!You haven't selected any items yet");
+  //   $("#empty_cart").append("Your cart is still empty!");
+
+  //   return;
+  // }
   foodItemQueries.getFoodItemWithId(pendingItemsArray)
     .then(foodItem => {
       pendingItemsWithQuantity = foodItem.map((item) => ({
@@ -62,7 +71,7 @@ checkoutRoutes.get('/', (req, res) => {
   }
   getUserbyId(userId)
     .then((user) => {
-      
+
       const templateVars = { pendingItemsWithQuantity: pendingItemsWithQuantity, user: user };
       console.log("user ^^^^^^^^^^^^^^^^", user);
       res.render('checkout.ejs', templateVars);
@@ -70,6 +79,41 @@ checkoutRoutes.get('/', (req, res) => {
     });
 
 });
+
+
+
+checkoutRoutes.post('/payment', (req, res) => {
+  const userId = req.session['user_id'];
+
+  db.query(`INSERT INTO orders (order_status, user_id) VALUES( true, $1) RETURNING *`, [userId], (err, results) => {
+
+    for (let item of pendingItemsWithQuantity) {
+      console.log(item.name);
+
+      let orderId = results.rows[0].id;
+      db.query(`INSERT INTO ordered_items (order_id, menu_id, quantity) VALUES( $1, $2, $3)`, [orderId, item.id, item.quantity], (err, results) => {
+        if (err) {
+          throw err;
+        }
+
+      }
+      );
+
+      if (err) {
+        throw err;
+      }
+
+    }
+
+    res.json({ response: "Success" });
+
+  }
+  );
+
+}
+
+
+);
 
 // menuRoutes.get('/', (req, res) => {
 

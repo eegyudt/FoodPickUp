@@ -29,7 +29,7 @@
   <%- include("partials/_header") %>
   <div class='checkout_page'>
     <div>
-      <h1>Checkout</h1>
+      <h1 id="checkout_title">Checkout</h1>
       <a class="clearCart" href="/menu">Clear Cart</a>
     </div>
 
@@ -60,11 +60,21 @@
       </div>
     </table>
 
-    <div class="buttonContainer">
-      <input type="button" id="submitButton" value="Submit order" />
+
+    <form method="POST" action="/checkout">
+      <div>
+        <table id="order"></table>
+      </div>
+      <div class="successMessage1"></div>
+      <div class="successMessage2"></div>
+      
     </div>
-    <div class="SuccessMessage"></div>
+  </form>
+  
+  <div class="buttonContainer">
+    <input type="button" id="submitButton" value="Submit order" />
   </div>
+    
 </body>
 
 </html>

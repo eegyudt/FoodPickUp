@@ -1,4 +1,4 @@
-navbar {
+.navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,36 +17,13 @@ navbar {
   padding-right: 1.5em;
 }
 
-.right-nav>p {
-  margin: 0;
-}
 
-.right-nav {
+.rigth-nav {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: Source Sans Pro, Sans-Serif;
-  font-size: 0.75em;
-  background: transparent;
-  border: 0px;
-  color: white;
-  cursor: pointer;
+  justify-content: flex-end
 }
 
-.navbar button {
-  font-size: 0.75em;
-  color: white;
-  background-color: #4056A1;
-  cursor: pointer;
-  height: 77px;
-  width: 247px;
-  border-radius: 20px;
-  border: solid #5675dc;
-}
+.navbar-links {
 
-button.right-nav:hover {
-
-  box-shadow: 2px 5px #888888;
-  text-shadow: 0.2px 0.2px rgb(79, 79, 136);
 }
