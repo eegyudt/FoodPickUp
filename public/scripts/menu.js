@@ -14,14 +14,17 @@ $(() => {
       for (const index in foodItem) {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`
-        <img class="food_photo" src="${item.food_photo_url}"
-        <div id=food_name>${item.name}</div>
-        <div>${item.ingredients}</div></td>
-        <td id=price-${index}>${item.price}<span>$</span></td>
         <td>
-        <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
-        <input readonly name="${item.id}" id="qty-${index}" value="0"/>
-        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/></td>`).appendTo($menuList);
+        <div><img class="food_photo" src="${item.food_photo_url}"<div>
+        <div class="food_name">${item.name}</div>
+        <div class="ingredients">${item.ingredients}</div>
+        </td>
+        <td class="price" id=price-${index}>${item.price}</td>
+        <td><div class="buttons">
+        <input type="button" class="minus"value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
+        <input readonly name="${item.id}" class="count" id="qty-${index}" value="0"/>
+        <input type="button" class="plus" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+        </div></td>`).appendTo($menuList);
       }
 
     });
@@ -44,9 +47,7 @@ const qtyAdd = function(element) {
   
   console.log("price>>>", $(`#price-${index}`).text());
   priceCalculate(price);
-
-
-};
+  };
 
 const qtyMin = function(element) {
   let index = $(element).attr('id').slice(7);
