@@ -2,16 +2,74 @@
   margin: 40px;
 }
 
+#checkout_title {
+  padding-bottom: 0.5em;
+}
 
 .successMessage1 {
   padding-top: 1em;
   font-size: 30px;
   font-weight: 600;
-  color: rgb(34, 16, 227);
+  color: rgb(230, 10, 90);
 }
 
-
-/* .item_name {
-  font-size: 25px;
+.successMessage2 {
+  padding-top: 1em;
+  font-size: 20px;
   font-weight: 600;
-} */
+  color: rgb(230, 10, 90);
+}
+
+#total {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+#item_name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.buttonContainer {
+  width: 2em;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  padding-left: 30px;
+  padding-right: 30px;
+  
+}
+
+#clear_cart_button {
+  color: rgb(230, 10, 90);
+  font-weight: 600;
+  margin-left: 10em;
+  cursor: pointer;
+  border-color: rgb(230, 10, 90);
+  border-radius: 10px;
+  background-color: rgb(255, 244, 247);
+}
+
+#submit_button {
+  color: rgb(230, 10, 90);
+  font-weight: 600;
+  cursor: pointer;
+  border-color: rgb(230, 10, 90);
+  border-radius: 10px;
+  background-color: rgb(255, 244, 247);
+}
+
+.buttonContainer {
+  transition: filter 500ms;
+}
+
+#clear_cart_button:hover {
+  transition: filter 250ms;
+  filter: brightness(140%);
+}
+
+#submit_button:hover {
+  transition: filter 250ms;
+  filter: brightness(140%);
+}

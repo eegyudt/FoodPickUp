@@ -13,3 +13,31 @@
   border-color: #4056A1;
   border-radius: 30px
 }
+
+/* .navbar {
+  justify-content: space-between;
+} */
+
+.right_nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* .logout_button {
+  color: rgb(230, 10, 90);
+  font-weight: 600;
+  cursor: pointer;
+  border-color: rgb(230, 10, 90);
+  border-radius: 10px;
+  background-color: rgb(255, 244, 247);
+}
+
+.logout_button {
+  transition: filter 500ms;
+}
+
+.logout_button:hover {
+  transition: filter 250ms;
+  filter: brightness(140%);
+} */

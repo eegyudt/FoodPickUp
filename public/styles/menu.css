@@ -3,11 +3,27 @@
 }
 
 .menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
   padding-left: 10px;
   padding-right: 10px;
 }
 
+/* .food_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+} */
+
 #qty {
   margin-left: 10px;
   margin-right: 10px
+}
+
+.food_photo {
+  height: 30px;
+ /* width: auto; */
 }
