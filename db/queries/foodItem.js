@@ -17,12 +17,8 @@ const getFoodItemWithId = (ids) => {
 
 const getPendingOrders = () => {
 
-  return db.query(`SELECT orders.id, orders.user_id, menu_items.name
-  FROM orders
-  JOIN ordered_items ON order_id = orders.id
-  JOIN menu_items ON menu_id = menu_items.id
-  WHERE order_status IS FALSE AND date(order_started) = CURRENT_DATE
-  ORDER BY orders.id DESC;`)
+  return db.query(`SELECT orders.id as orderID, orders.user_id as userID, users.name as name, users.phone as phoneNumber, menu_items.name as dish FROM orders JOIN ordered_items ON order_id = orders.id JOIN menu_items ON menu_id = menu_items.id JOIN users ON users.id = orders.user_id WHERE order_status IS TRUE AND date(order_started) = CURRENT_DATE;
+  `)
     .then(data => {
       return data.rows;
     });

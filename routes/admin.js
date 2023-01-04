@@ -12,7 +12,7 @@ adminRoutes.get('/', (req, res) => {
   if (!userId) {
     return res.redirect('/menu');
   }
- 
+
   return getUserbyId(userId)
     .then((user) => {
       console.log("ADMIN page user =============================", user);
@@ -29,9 +29,9 @@ adminRoutes.get('/', (req, res) => {
 // adminRoutes.POST('/', (req, res) => {
 
 //   const userId = req.session['user_id'];
-//   if (!userId) {
-//     return res.redirect('/menu');
-//   }
+//   // if (!userId) {
+//   //   return res.redirect('/menu');
+//   // }
 //   return getUserbyId(userId)
 //     .then((user) => {
 //       console.log("user ??????????????????????????????????????", user);
