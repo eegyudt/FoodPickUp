@@ -17,10 +17,6 @@
     </button> -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div>
-        <a href="/logout">Log out</a>
-      </div>
-      <br>
-      <div>
         <% if(user.id){ %>
                 <div>
                   <h5 align="left">Logged in as: <%= user.name %>!</h1>
@@ -28,9 +24,7 @@
 
                 <div>
                   <div>
-                    <form method="POST" action="/logout">
-                      <button type="submit" class="btn btn-danger">Logout </button>
-                    </form>
+                    <input type="button" onclick="location.href='/logout';" value="Log out" />
                   </div>
                 </div>
                 <% } else{ %>
