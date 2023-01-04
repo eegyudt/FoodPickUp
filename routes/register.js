@@ -5,6 +5,8 @@ const db = require('../db/connection');
 const cookieSession = require('cookie-session');
 const { getUserbyId } = require("../helper");
 
+const { getUserbyId } = require("../helper");
+
 router.use(cookieSession({
   name: 'user_id',
   keys: ['user_id'],

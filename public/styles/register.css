@@ -1,10 +1,4 @@
-.error_message {
-  font-size: larger;
-  font-weight: 300;
-  color: rgb(255, 191, 0)
-}
-
-.login {
+.register {
   display: flex;
   flex-direction: column;
   justify-content: center;

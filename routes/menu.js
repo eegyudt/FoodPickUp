@@ -16,9 +16,9 @@ const { getUserbyId } = require("../helper");
 menuRoutes.get('/', (req, res) => {
 
   const userId = req.session['user_id'];
-  if (!userId) {
-    return res.redirect('/login');
-  }
+  // if (!userId) {
+  //   return res.redirect('/login');
+  // }
   getUserbyId(userId)
     .then((user) => {
 
