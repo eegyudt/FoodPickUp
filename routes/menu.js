@@ -70,63 +70,7 @@ menuRoutes.get('/', (req, res) => {
 //         .json({ error: err.message });
 //     });
 
-  
-
-
-// });
 
 
 
 module.exports = menuRoutes;
-// router.get('/', (req, res) => { //???? do we need this here to access db???
-//   foodItemQueries.getFoodItem()
-//     .then(foodItem => {
-//       res.json({ foodItem });
-//     })
-//     .catch(err => {
-//       res
-//         .status(500)
-//         .json({ error: err.message });
-//     });
-// });
-
-
-// router.post('/', (req, res) => {
-//   // const userId = req.session.userId;
-//   // const foodItem = response.foodItem;
-//   console.log({ data: req.body });
-//   const pendingItems = req.body;
-//   const pendingItemsArray = [];
-//   console.log(pendingItems);
-
-//   for (let key in pendingItems) {
-
-//     if (pendingItems[key]) {
-//       //  const insertPendingOrder = {
-//       //   text: `INSERT INTO ordered_items (menu_id, quantity); VALUES ()`,
-//       //   values: []
-//       //  };
-//       // console.log(pendingItems[key]);
-//       pendingItemsArray.push(pendingItems[key]);
-//     }
-//   }
-
-//   for (let index in pendingItemsArray) {
-
-//     const item = foodItem[index];
-//     if ($(`#qty-${index}`) > 0) {
-//       // $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>${item.price}</td><td>$(`#qty-${index}`)<input type="submit" value="Submit Order" id="submit">`).appendTo($orderBox);
-
-//         $(`<tr class="menu">`).append(`<td>${item.name}</td><td id=price-${index}>$${item.price}</td><td>`).appendTo($menuList);
-//     }
-//   }
-
-
-//   console.log(pendingItemsArray);
-
-
-
-
-//   // res.render('checkout', { data: pendingItemsArray });
-//   // res.redirect('/checkout');
-// });

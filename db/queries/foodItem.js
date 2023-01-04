@@ -15,4 +15,17 @@ const getFoodItemWithId = (ids) => {
     });
 };
 
-module.exports = { getFoodItem, getFoodItemWithId };
+const getPendingOrders = () => {
+
+  return db.query(`SELECT orders.id, orders.user_id, menu_items.name
+  FROM orders
+  JOIN ordered_items ON order_id = orders.id
+  JOIN menu_items ON menu_id = menu_items.id
+  WHERE order_status IS FALSE AND date(order_started) = CURRENT_DATE
+  ORDER BY orders.id DESC;`)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getFoodItem, getFoodItemWithId, getPendingOrders };

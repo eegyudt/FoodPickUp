@@ -44,6 +44,7 @@ app.use(cookieSession({
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const menuApiRoutes = require('./routes/menu-api');
+const adminApiRoutes = require('./routes/admin-api');
 // const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
@@ -59,6 +60,7 @@ const adminRoutes = require('./routes/admin');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/menu', menuApiRoutes);
+app.use('/api/admin', adminApiRoutes);
 // app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/menu', menuRoutes);
