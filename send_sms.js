@@ -3,7 +3,7 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioNumber = process.env.TWILIO_PHONE_NUMBER;
 const myNumber = process.env.MY_PHONE_NUMBER;
-let textMessage = 'Luke! I am your father!';
+let textMessage = "Have you heard about Pluto? That's messed up, right?";
 const client = require('twilio')(accountSid, authToken);
 
 const sendText = (message, phoneNumber) => {
@@ -16,6 +16,6 @@ const sendText = (message, phoneNumber) => {
     .then(message => console.log(message.sid));
 };
 
-sendText(textMessage, myNumber);
+// sendText(textMessage, myNumber);
 
 module.exports = sendText;

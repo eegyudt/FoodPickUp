@@ -27,13 +27,23 @@
 
 <body>
 
-    <div class="menu_page">
-      <div>
-        <h1>ADMIN PAGE</h1>
-      </div>
-
-      <div id="orders"></div>
+  <div class="menu_page">
+    <div>
+      <h1>ADMIN PAGE</h1>
     </div>
+
+    <div id="orders"></div>
+    <div>
+      <form method="POST" action="/admin">
+
+        <label for="name">Enter timeframe in minutes:</label>
+        <input type="text" id="timeframe" name="timeframe" placeholder="mins" required />
+        <input type="submit" value="Send SMS" />
+
+      </form>
+
+    </div>
+  </div>
 
 
 </body>
@@ -68,13 +78,13 @@
 
 <body>
 
-    <div class="menu_page">
-      <div>
-        <h1>ADMIN PAGE</h1>
-      </div>
-
-      <div id="adminTable">Hi Admins!!!</div>
+  <div class="menu_page">
+    <div>
+      <h1>ADMIN PAGE</h1>
     </div>
+
+    <div id="adminTable">Hi Admins!!!</div>
+  </div>
 
 
 </body>
