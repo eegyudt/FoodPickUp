@@ -21,7 +21,7 @@ const getPendingOrders = () => {
   FROM orders
   JOIN ordered_items ON order_id = orders.id
   JOIN menu_items ON menu_id = menu_items.id
-  WHERE order_status IS FALSE AND date(order_started) = CURRENT_DATE
+  WHERE order_status IS TRUE AND date(order_started) = CURRENT_DATE
   ORDER BY orders.id DESC;`)
     .then(data => {
       return data.rows;

@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
   foodItemQueries.getPendingOrders()
     .then(orders => {
       res.json({ orders });
+      console.log("orders ------------------------>>>>>>", orders)
     })
     .catch(err => {
       res
