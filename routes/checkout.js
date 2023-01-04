@@ -1,9 +1,10 @@
 const express = require('express');
 const checkoutRoutes = express.Router();
-// const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 const selectCartItems = require('../db/selectCartItemsWithId');
+const { getUserbyId } = require("../helper");
+
 
 let pendingItemsWithQuantity = [];
 
@@ -56,21 +57,19 @@ checkoutRoutes.post('/', (req, res) => {
 
 checkoutRoutes.get('/', (req, res) => {
   const userId = req.session['user_id'];
-  let userName = "";
+  if (!userId) {
+    return res.redirect('/login');
+  }
+  getUserbyId(userId)
+    .then((user) => {
 
-  db.query(`SELECT id, email, password, admin FROM users WHERE id = $1`, [userId], (err, results) => {
-    if (err) {
-      throw err;
-    }
-    userName = results.rows[0].name;
-    console.log(userName);
-  })
-  const userObj = {userId, userName: results.rows[0].name };
+      const templateVars = { pendingItemsWithQuantity: pendingItemsWithQuantity, user: user };
+      console.log("user ^^^^^^^^^^^^^^^^", user);
+      res.render('checkout.ejs', templateVars);
 
-  res.render('checkout.ejs', { pendingItemsWithQuantity, userObj });
+    });
 
 });
-
 
 module.exports = checkoutRoutes;
 
