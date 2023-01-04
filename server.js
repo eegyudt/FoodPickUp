@@ -1,7 +1,7 @@
 // load .env data into process.env
 require('dotenv').config();
 
-const {getUserbyId} = require("./helper");
+const { getUserbyId } = require("./helper");
 
 
 // Web server config
@@ -52,6 +52,7 @@ const orderRoutes = require('./routes/order');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
+// const adminRoutes = require('./routes/admin');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -66,6 +67,8 @@ app.use('/order', orderRoutes);
 app.use('/register', registerRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
+// app.use('/admin', adminRoutes);
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -77,12 +80,12 @@ app.get('/', (req, res) => {
   const userId = req.session['user_id'];
 
   getUserbyId(userId)
-  .then ((user) => {
+    .then((user) => {
 
-    const templateVars = { user };
-    res.render('index', templateVars );
+      const templateVars = { user };
+      res.render('index', templateVars);
 
-  })
+    });
 });
 
 

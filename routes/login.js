@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
-const {getUserbyId} = require("../helper");
+const { getUserbyId } = require("../helper");
 
 router.get('/', (req, res) => {
 
@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
     return res.redirect('/menu');
   }
   getUserbyId(userId)
-  .then ((user) => {
+    .then((user) => {
 
-    const templateVars = { user };
-    res.render('login', templateVars );
+      const templateVars = { user };
+      res.render('login', templateVars);
 
-  })
+    });
 });
 
 router.post('/', (req, res) => {
@@ -61,7 +61,6 @@ router.post('/', (req, res) => {
       res.redirect('/admin');
 
     }
-
 
     const user_id = results.rows[0].id;
     req.session.user_id = user_id;

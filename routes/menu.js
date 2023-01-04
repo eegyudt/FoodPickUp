@@ -8,14 +8,29 @@
 
 const express = require('express');
 const menuRoutes = express.Router();
-const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
+const { getUserbyId } = require("../helper");
 
 
 menuRoutes.get('/', (req, res) => {
-  res.render('menu');
+
+  const userId = req.session['user_id'];
+  if (!userId) {
+    return res.redirect('/login');
+  }
+  getUserbyId(userId)
+    .then((user) => {
+
+      const templateVars = { user };
+      res.render('menu', templateVars);
+
+    });
 });
+
+// menuRoutes.get('/', (req, res) => {
+//   res.render('menu');
+// });
 
 // menuRoutes.post('/', (req, res) => {
 //   console.log({ data: req.body });
