@@ -13,8 +13,6 @@ adminRoutes.get('/', (req, res) => {
   }
   return getUserbyId(userId)
     .then((user) => {
-      console.log("user ??????????????????????????????????????", user);
-
       const templateVars = { user };
       return res.render('admin', templateVars);
 
@@ -24,53 +22,3 @@ adminRoutes.get('/', (req, res) => {
 module.exports = adminRoutes;
 
 
-// menuRoutes.get('/', (req, res) => {
-
-//   const userId = req.session['user_id'];
-//   if (!userId) {
-//     return res.redirect('/login');
-//   }
-//   getUserbyId(userId)
-//     .then((user) => {
-
-//       const templateVars = { user };
-//       res.render('menu', templateVars);
-
-//     });
-// });
-
-// let pendingItemsWithQuantity = [];
-
-// adminRoutes.post('/', (req, res) => {
-//   console.log({ data: req.body });
-
-//   const userId = req.session['user_id'];
-
-//   //checking if user is logged in
-//   if (!userId) {
-//     return res.status(400).send(`<h1>You must login first!<h1> <a href ="/login">Back to Login</a>`);
-//   }
-
-// });
-
-
-// adminRoutes.get('/', (req, res) => {
-//   const userId = req.session['user_id'];
-//   let userName = "";
-//   db.query(`SELECT id, email, password, admin FROM users WHERE id = $1`, [userId], (err, results) => {
-//     if (err) {
-//       throw err;
-//     }
-//     userName = results.rows[0].name;
-//     console.log(userName);
-//   })
-//   const userObj = {userId, userName: results.rows[0].name };
-
-//   // const user = users[user_id];
-//   // const templateVars = { user };
-//   // res.render("urls_new", templateVars);
-//   res.render('admin.ejs', { pendingItemsWithQuantity, userObj });
-
-// });
-
-// module.exports = adminRoutes;
