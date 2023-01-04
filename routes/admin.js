@@ -3,23 +3,41 @@ const adminRoutes = express.Router();
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 const selectCartItems = require('../db/selectCartItemsWithId');
-const { getUserbyId } = require("./helper");
+const { getUserbyId } = require("../helper");
 
 adminRoutes.get('/', (req, res) => {
 
   const userId = req.session['user_id'];
-  if (userId) {
+  if (!userId) {
     return res.redirect('/menu');
   }
-  getUserbyId(userId)
+  return getUserbyId(userId)
     .then((user) => {
+      console.log("user ??????????????????????????????????????", user);
 
       const templateVars = { user };
-      res.render('login', templateVars);
+      return res.render('admin', templateVars);
 
     });
 });
 
+module.exports = adminRoutes;
+
+
+// menuRoutes.get('/', (req, res) => {
+
+//   const userId = req.session['user_id'];
+//   if (!userId) {
+//     return res.redirect('/login');
+//   }
+//   getUserbyId(userId)
+//     .then((user) => {
+
+//       const templateVars = { user };
+//       res.render('menu', templateVars);
+
+//     });
+// });
 
 // let pendingItemsWithQuantity = [];
 

@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const { getUserbyId } = require("../helper");
 
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
 
   const userId = req.session['user_id'];
   if (userId) {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
   const email = req.body.email;
   const pw = req.body.password;
   // let name = '';
@@ -35,18 +35,15 @@ router.post('/', (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('login', { errors });
+    return res.render('login', { errors });
   }
 
   db.query(`SELECT id, email, password, admin FROM users WHERE email = $1`, [email], (err, results) => {
     if (err) {
       throw err;
     }
-    console.log("results--------------", results);
-    console.log("results.rows--------------", results.rows);
     console.log("results.rows[0]--------------", results.rows[0]);
-    console.log("results.rows[0].email--------------", results.rows[0].email);
-    console.log("results.rows[0].password--------------", results.rows[0].password);
+
 
     if (!results.rows) {
       return res.status(400).send(`<h1>You haven't registered this email!<h1> <a href ="/register">Back to Registration</a>`);
@@ -54,11 +51,13 @@ router.post('/', (req, res) => {
 
     if (!bcrypt.compareSync(pw, results.rows[0].password)) {
       errors.push({ message: "Incorrect login information!" });
-      res.render("login", { errors });
+      return res.render("login", { errors });
     }
 
     if (results.rows[0].admin === true) {
-      res.redirect('/admin');
+      const user_id = results.rows[0].id;
+      req.session.user_id = user_id;
+      return res.redirect('/admin');
 
     }
 
@@ -71,11 +70,14 @@ router.post('/', (req, res) => {
 }
 );
 
-//logout route
-router.post('/logout', (req, res) => {
+
+router.get('/logout', (req, res) => {
   req.session = null;
   res.redirect('/login');
 });
+
+module.exports = router;
+
 
 
 module.exports = router;

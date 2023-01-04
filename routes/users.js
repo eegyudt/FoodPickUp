@@ -7,8 +7,25 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../db/connection');
+const { getUserbyId } = require("../helper");
+
 
 router.get('/', (req, res) => {
+  const userId = req.session['user_id'];
+  if (!userId) {
+    return res.redirect('/menu');
+  }
+  getUserbyId(userId)
+    .then((user) => {
+
+      const templateVars = { user };
+      if (user.admin) {
+        res.render('users', templateVars);
+      }
+    });
+
+
   res.render('users');
 });
 
