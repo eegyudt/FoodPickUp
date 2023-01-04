@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <link rel="stylesheet" href="/styles/login.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+</head>
+
+<body>
+  <%- include('partials/_header') %>
+    <h1>Log into Your Account</h1>
+
+    <div>
+      <% if (typeof errors !="undefined" ) { %>
+        <% errors.forEach(error=> { %>
+          <div class="'error_message">
+            <%= error.message %>
+          </div>
+          <% }) %>
+            <% } %>
+        </div>
+
+    <form method="POST" action="/login">
+      <div>
+        <input type="email" id="email" name="email" placeholder="Email" required />
+      </div>
+      <div>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+      </div>
+      <div>
+        <input type="submit" value="Login" />
+      </div>
+      <a href="/register">Not registered yet? Create your account here!</a>
+
+    </form>
+</body>
+
+</html>

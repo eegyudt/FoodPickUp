@@ -1,0 +1,15 @@
+.headerClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 10px 0px;
+  margin-top: 150px;
+  height: 400px;
+  background-color: rgb(27, 176, 176);
+  color: white;
+  margin-left: 20px;
+  border: 5pc;
+  border-color: #4056A1;
+  border-radius: 30px
+}
