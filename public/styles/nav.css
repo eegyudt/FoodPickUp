@@ -9,7 +9,7 @@
   margin: 0;
   color: #FFFFFF;
   background-color: #8aa140;
-  height: 120px;
+  height: 50px;
   font-family: Bungee, sans-serif;
   padding-bottom: 15px;
   padding-top: 26px;
@@ -25,5 +25,5 @@
 }
 
 .logout_button {
-  
+
 }

@@ -15,7 +15,6 @@
 
 <body>
   <%- include('partials/_header') %>
-    <h1>Log into Your Account</h1>
 
     <div>
       <% if (typeof errors !="undefined" ) { %>
@@ -27,7 +26,8 @@
             <% } %>
         </div>
 
-    <form method="POST" action="/login">
+    <form method="POST" action="/login" class="login">
+      <h1 class="title">Login</h1>
       <div>
         <input type="email" id="email" name="email" placeholder="Email" required />
       </div>

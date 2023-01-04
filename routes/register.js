@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const cookieSession = require('cookie-session');
 
+const { getUserbyId } = require("../helper");
+
 router.use(cookieSession({
   name: 'user_id',
   keys: ['user_id'],
@@ -11,8 +13,23 @@ router.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
+// router.get('/', (req, res) => {
+//   res.render('register');
+// });
+
 router.get('/', (req, res) => {
-  res.render('register');
+
+  const userId = req.session['user_id'];
+  if (userId) {
+    return res.redirect('/menu');
+  }
+  getUserbyId(userId)
+    .then((user) => {
+
+      const templateVars = { user };
+      res.render('register', templateVars);
+
+    });
 });
 
 router.post('/', async (req, res) => {
