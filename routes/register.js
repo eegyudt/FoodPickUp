@@ -76,7 +76,7 @@ router.post('/', async (req, res) => {
           }
           getUserbyId(userId)
             .then((user) => {
-              errors.push({ message: "Email already exisited" });
+              errors.push({ message: "Email already registered!" });
               res.render("register", { errors, user });
             });
         } else {
