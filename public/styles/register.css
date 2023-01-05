@@ -5,3 +5,17 @@
   align-items: center;
   height: 600px;
 }
+
+.bg_img {
+  background: url("/images/phoneBG.png") fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgb(0, 0, 0, 0.8);
+  opacity:0.7;
+}
+
+.title {
+  color:rgba(220, 193, 111, 0.858);
+  font-weight: 400;
+  font-style: inherit;
+}

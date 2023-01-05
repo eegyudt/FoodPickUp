@@ -51,6 +51,18 @@ adminRoutes.get('/', (req, res) => {
 });
 
 
+// adminRoutes.post('/', (req, res) => {
+
+//   const time = req.body.timeframe;
+//   const name = "";
+//   console.log(req.body(orderid));
+//   let message = `Hi ${name}, Your oder will be ready for pickup in ${time} minutes. Thank you for choosing to dine with us! Pizzaholic 🍕`;
+//   sendText(message, +14038164180);
+//   // $( "#sendSMSButton" ).empty();
+
+
+// });
+
 module.exports = adminRoutes;
 
 

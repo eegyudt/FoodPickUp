@@ -47,8 +47,8 @@
           <tr>
             <td><%= order.orderid %></td>
             <td><%= order.userid %></td>
-            <td><%= order.name %></td>
-            <td><%= order.phonenumber %></td>
+            <td id="nameSMS"><%= order.name %></td>
+            <td id="phoneSMS"><%= order.phonenumber %></td>
             <td><%= order.orderedDishes.join(", ") %></td>
             <td><%= order.orderstarted %></td>
             <td>

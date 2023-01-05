@@ -13,9 +13,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 </head>
 
-<body>
+<body class="bg_img">
   <%- include('partials/_header') %>
-
     <div>
       <% if (typeof errors !="undefined" ) { %>
         <% errors.forEach(error=> { %>
@@ -24,8 +23,9 @@
           </div>
           <% }) %>
             <% } %>
-        </div>
+    </div>
 
+  <div>
     <form method="POST" action="/login" class="login">
       <h1 class="title">Login</h1>
       <div>
@@ -38,8 +38,8 @@
         <input type="submit" value="Login" />
       </div>
       <a href="/register">Not registered yet? Create your account here!</a>
-
     </form>
+  <div>
 </body>
 
 </html>
