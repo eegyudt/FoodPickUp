@@ -59,30 +59,34 @@ router.post('/', async (req, res) => {
     console.log(hashedPassword);
 
     db.query(
-      `SELECT * FROM users
-      WHERE email = $1`, [email], (err, results) => {
-      if (err) {
-        throw err;
-      }
-      console.log(results.rows);
-
-      if (results.rows.length > 0) {
-        errors.push({ message: "Email already exisited" });
-        res.render("register", { errors });
-      } else {
-        db.query(
-          `INSERT INTO users (name, email, phone, password)
-            VALUES ($1, $2, $3, $4)
-            RETURNING id, password`, [name, email, phone, hashedPassword], (err, results) => {
-          if (err) {
-            throw err;
-          }
-          console.log(results.rows);
-          res.redirect('/login');
+      `SELECT * FROM users WHERE email = $1`, [email], (err, results) => {
+        if (err) {
+          throw err;
         }
-        );
+        console.log(results.rows);
+
+        if (results.rows.length > 0) {
+          const userId = req.session['user_id'];
+          if (userId) {
+            return res.redirect('/menu');
+          }
+          getUserbyId(userId)
+            .then((user) => {
+              errors.push({ message: "Email already registered" });
+              res.render("register", { errors, user });
+            });
+        } else {
+          db.query(
+            `INSERT INTO users (name, email, phone, password) VALUES ($1, $2, $3, $4) RETURNING id, password`, [name, email, phone, hashedPassword], (err, results) => {
+              if (err) {
+                throw err;
+              }
+              console.log(results.rows);
+              res.redirect('/login');
+            }
+          );
+        }
       }
-    }
     );
   }
 });
