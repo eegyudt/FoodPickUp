@@ -39,21 +39,23 @@
           <th scope="col">Customer Name</th>
           <th scope="col">Phone</th>
           <th scope="col">Item Name</th>
+          <th scope="col">Order Time</th>
         </tr>
       </thead>
       <tbody>
-        <% for (let order of orders) { %>
+        <% for (let order of finalResult) { %>
           <tr>
             <td><%= order.orderid %></td>
             <td><%= order.userid %></td>
             <td><%= order.name %></td>
             <td><%= order.phonenumber %></td>
-            <td><%= order.dish %></td>
-            <td><%= order.userid %></td>
+            <td><%= order.orderedDishes.join(", ") %></td>
+            <td><%= order.orderstarted %></td>
             <td>
               <form method="POST" action="/admin">
                 <input type="text" id="timeframe" name="timeframe" placeholder="mins" required />
-                <button type="submit">Send SMS</button>
+                <button id="sendSMS" type="submit">Send SMS</button>
+                <button id="complete" type="submit">Complete</button>
               </form>
             </td>
           </tr>
@@ -61,14 +63,6 @@
       </tbody>
     </table>
 
-    <!-- <div class="orderInfo"></div>
-    <form method="POST" action="/admin">
-      <label for="name">Enter timeframe in minutes:</label>
-      <input type="text" id="timeframe" name="timeframe" placeholder="mins" required />
-      <input type="submit" value="Send SMS" />
-    </form>
-  </div>
-  </div> -->
   </div>
 
 

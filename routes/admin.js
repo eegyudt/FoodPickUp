@@ -2,7 +2,6 @@ const express = require('express');
 const adminRoutes = express.Router();
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
-const selectCartItems = require('../db/selectCartItemsWithId');
 const { getUserbyId } = require("../helper");
 const sendText = require('../send_sms');
 
@@ -22,18 +21,33 @@ adminRoutes.get('/', (req, res) => {
       foodItemQueries.getPendingOrders()
         .then(orders => {
           // res.json({ orders });
-          console.log("admin page ==================== orders:", orders);
-          return res.render('admin', { user, orders });
+
+          const result = {};
+
+          for (let order of orders) {
+
+            if (result[order.orderid]) {
+              result[order.orderid].orderedDishes.push(`${order.dish} x ${order.quantity}`);
+            } else {
+              result[order.orderid] = {
+                orderid: order.orderid,
+                orderstarted: order.orderstarted,
+                userid: order.userid,
+                name: order.name,
+                phonenumber: order.phonenumber,
+                orderedDishes: [`${order.dish} x ${order.quantity}`]
+              };
+            }
+          }
+          const finalResult = Object.values(result);
+          return res.render('admin', { user, finalResult });
         })
         .catch(err => {
           res
             .status(500)
             .json({ error: err.message });
         });
-
-
     });
-
 });
 
 
