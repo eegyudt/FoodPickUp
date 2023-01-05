@@ -9,9 +9,7 @@
 // eslint-disable-next-line no-undef
 $(document).ready(function() {
  
-
-
-   
+  
     $("#submit_button").click(function() {
       $.ajax({
         method: 'POST',
@@ -28,7 +26,12 @@ $(document).ready(function() {
 
         
   });
- })});
+
+ })
+
+
+
+});
 
 
 

@@ -35,7 +35,7 @@ adminRoutes.get('/', (req, res) => {
                 userid: order.userid,
                 name: order.name,
                 phonenumber: order.phonenumber,
-                orderedDishes: [`${order.dish} --- quantity: ${order.quantity}`]
+                orderedDishes: [`${order.dish} x ${order.quantity}`]
               };
             }
           }

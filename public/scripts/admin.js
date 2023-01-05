@@ -3,7 +3,7 @@ $(() => {
 
 
 
-  $('#sendSMS').on('click', function(event) {
+  $('.sendSMS').on('click', function() {
     const detail = $(this).closest('.orderDetail');
     const orderid = detail.find('.orderid').text();
     const phoneNumber = detail.find('.phoneSMS').text();
@@ -12,8 +12,9 @@ $(() => {
     const data = { orderid, phoneNumber, timeframe };
     console.log("orderid, phoneNumber, timeframe >>>>>", data);
 
-    console.log("admin page event =======================", event);
-    console.log("admin page event current target!!! =======================", event.currentTarget);
+
+    // console.log("admin page event =======================", event);
+    // console.log("admin page event current target!!! =======================", event.currentTarget);
 
 
     $.post('/admin', data)
@@ -24,7 +25,7 @@ $(() => {
         const smsButton = detail.find('.smsBtn');
         const textBox = detail.find('.textClass');
 
-        // debugger;
+        debugger;
 
         smsButton.empty();
         textBox.empty();

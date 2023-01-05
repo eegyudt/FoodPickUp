@@ -5,7 +5,7 @@ const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 const selectCartItems = require('../db/selectCartItemsWithId');
 const { getUserbyId } = require("../helper");
-
+const sendText = require('../send_sms');
 
 let pendingItemsWithQuantity = [];
 
@@ -84,13 +84,20 @@ checkoutRoutes.get('/', (req, res) => {
 
 checkoutRoutes.post('/payment', (req, res) => {
   const userId = req.session['user_id'];
+  let orderId;
+
+  // console.log("checkout.js in routes req.body", req.body);
+
+
 
   db.query(`INSERT INTO orders (order_status, user_id) VALUES( true, $1) RETURNING *`, [userId], (err, results) => {
-
+    let itemArray = [];
     for (let item of pendingItemsWithQuantity) {
-      console.log(item.name);
 
-      let orderId = results.rows[0].id;
+      orderId = results.rows[0].id;
+      let itemID = item.id;
+      let itemQuantity = item.quantity;
+      itemArray.push(`${item.name} -  quantity: ${item.quantity}`);
       db.query(`INSERT INTO ordered_items (order_id, menu_id, quantity) VALUES( $1, $2, $3)`, [orderId, item.id, item.quantity], (err, results) => {
         if (err) {
           throw err;
@@ -102,9 +109,11 @@ checkoutRoutes.post('/payment', (req, res) => {
       if (err) {
         throw err;
       }
-
     }
-
+    console.log("CHECKOUT ROUTES ITEMARRAY =========================", itemArray);
+    const message = `Hi Pizzaholic 🍕, You have a new order (order number: ${orderId} --- ${itemArray}) Go to your dashboard please to manage the order`;
+    phoneNumber = +14038164180;
+    sendText(message, phoneNumber);
     res.json({ response: "Success" });
 
   }
