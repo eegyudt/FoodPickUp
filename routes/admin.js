@@ -1,4 +1,5 @@
 const express = require('express');
+const { DocumentContext } = require('twilio/lib/rest/preview/sync/service/document');
 const adminRoutes = express.Router();
 const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
@@ -49,9 +50,34 @@ adminRoutes.get('/', (req, res) => {
 });
 
 
+// adminRoutes.post('/', (req, res) => {
+
+//   const time = req.body.timeframe;
+//   const name = "";
+//   console.log(req.body(orderid));
+//   let message = `Hi ${name}, Your oder will be ready for pickup in ${time} minutes. Thank you for choosing to dine with us! Pizzaholic 🍕`;
+//   sendText(message, +14038164180);
+//   // $( "#sendSMSButton" ).empty();
+
+  
+//   let button = document.querySelector('#button');
+// let msg = document.querySelector('#message');
+
+// button.addEventListener('click', ()=>{
+//   msg.classList.toggle('reveal');
+// })
+
+
+// });
 
 module.exports = adminRoutes;
 
+
+
+// let div = document.getElementById('sendSMSButton');
+// while (div.firstChild) {
+//   div.removeChild(div.firstChild);
+// }
 
 // adminRoutes.POST('/', (req, res) => {
 

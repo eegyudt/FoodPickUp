@@ -28,7 +28,7 @@
 <body>
 
   <div class="menu_page">
-    <h1>Admin Dashboard</h1>
+    <h1>Pizzaholic 🍕 Admin Dashboard</h1>
     <div id="orders"></div>
 
     <table class="orderContainer">
@@ -39,6 +39,7 @@
           <th scope="col">Customer Name</th>
           <th scope="col">Phone</th>
           <th scope="col">Item Name</th>
+          <th scope="col">Order Time</th>
         </tr>
       </thead>
       <tbody>
@@ -46,13 +47,15 @@
           <tr>
             <td><%= order.orderid %></td>
             <td><%= order.userid %></td>
-            <td><%= order.name %></td>
-            <td><%= order.phonenumber %></td>
+            <td id="nameSMS"><%= order.name %></td>
+            <td id="phoneSMS"><%= order.phonenumber %></td>
             <td><%= order.orderedDishes.join(", ") %></td>
+            <td><%= order.orderstarted %></td>
             <td>
               <form method="POST" action="/admin">
                 <input type="text" id="timeframe" name="timeframe" placeholder="mins" required />
-                <button type="submit">Send SMS</button>
+                <button id="sendSMS" type="submit">Send SMS</button>
+                <button id="complete" type="submit">Complete</button>
               </form>
             </td>
           </tr>

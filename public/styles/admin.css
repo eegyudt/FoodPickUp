@@ -1,0 +1,21 @@
+body {
+ background-color:aliceblue;
+}
+
+#sendSMS {
+  background-color: white;
+  color: rgb(159, 13, 83);
+}
+
+#complete {
+  background-color: white;
+  color: rgb(159, 13, 83);
+}
+
+#timeframe {
+  max-width: fit-content;
+}
+
+.count {
+  width: 10px;
+}

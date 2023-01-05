@@ -28,12 +28,6 @@ checkoutRoutes.post('/', (req, res) => {
     .forEach(([key, value]) => pendingItemsArray.push(key));
   console.log("pendingItemsArray>>>>>>>>>>>>>>>>>>>", pendingItemsArray);
 
-  // if (pendingItemsArray.length === 0) {
-  //   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!You haven't selected any items yet");
-  //   $("#empty_cart").append("Your cart is still empty!");
-
-  //   return;
-  // }
   foodItemQueries.getFoodItemWithId(pendingItemsArray)
     .then(foodItem => {
       pendingItemsWithQuantity = foodItem.map((item) => ({
@@ -49,8 +43,7 @@ checkoutRoutes.post('/', (req, res) => {
           if (err) {
             throw err;
           }
-        }
-        );
+        });
       }
       console.log("pendingItemsWithQuantity", pendingItemsWithQuantity);
 
@@ -75,9 +68,7 @@ checkoutRoutes.get('/', (req, res) => {
       const templateVars = { pendingItemsWithQuantity: pendingItemsWithQuantity, user: user };
       console.log("user ^^^^^^^^^^^^^^^^", user);
       res.render('checkout.ejs', templateVars);
-
     });
-
 });
 
 
@@ -95,54 +86,15 @@ checkoutRoutes.post('/payment', (req, res) => {
         if (err) {
           throw err;
         }
-
-      }
-      );
+      });
 
       if (err) {
         throw err;
       }
-
     }
-
     res.json({ response: "Success" });
-
-  }
-  );
-
-}
-
-
-);
-
-// menuRoutes.get('/', (req, res) => {
-
-//   const userId = req.session['user_id'];
-//   if (!userId) {
-//     return res.redirect('/login');
-//   }
-//   getUserbyId(userId)
-//     .then((user) => {
-
-//       const templateVars = { user };
-//       res.render('menu', templateVars);
-
-//     });
-// });
+  });
+});
 
 module.exports = checkoutRoutes;
 
-
-          // STRETCH???? NOT IMPLEMENTED YET
-          // selectCartItems.selectCartItemsWithId(userId)
-          // .then(cartItem => {
-          //   if (cartItem) {
-          //     alert("You already have a pending order");
-          //     res.redirect('/checkout');
-          //   }
-          // });
-
-
-                // console.log("foodItem>>>>>>>>>>>>>>>>", foodItem);
-      // res.json({ foodItem });
-      // pendingFoodItems = foodItem;

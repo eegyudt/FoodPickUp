@@ -11,6 +11,16 @@
   padding-right: 10px;
 } */
 
+.item_info {
+  display: flex;
+  flex-direction: row;
+}
+
+.item_description {
+  display: flex;
+  flex-direction: column;
+}
+
 .food_info {
   display: flex;
   flex-direction: column;
@@ -38,8 +48,8 @@
 }
 
 .food_photo {
-  height: 200px;
-  width: 280px;
+  height: 100px;
+  width: 150px;
   border-radius: 25px;
 }
 .buttons {
@@ -54,7 +64,7 @@
   font-weight: 500;
   line-height: 30px;
   padding: 0 2px;
-  min-width: 35px;
+  min-width: 10px;
   text-align: center;
 }
 

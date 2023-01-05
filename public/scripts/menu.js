@@ -15,9 +15,13 @@ $(() => {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`
         <td>
-        <div><img class="food_photo" src="${item.food_photo_url}"<div>
+        <div class="item_info">
+        <div><img class="food_photo" src="${item.food_photo_url}"</div>
+        <div class="item_description">
         <div class="food_name">${item.name}</div>
         <div class="ingredients">${item.ingredients}</div>
+        </div>
+        </div>
         </td>
         <td class="price" id=price-${index}>${item.price}</td>
         <td><div class="buttons">
