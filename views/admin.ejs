@@ -53,9 +53,15 @@
             <td><%= order.orderstarted %></td>
             <td>
               <form method="POST" action="/admin">
-                <input type="text" class="timeframe" name="timeframe" placeholder="mins" required />
-                <button id="sendSMS" type="button">Send SMS</button>
-                <button id="complete" type="submit">Complete</button>
+                <span class="textClass">
+                  <input type="text" class="timeframe" name="timeframe" placeholder="mins" required />
+                </span>
+                <span class="smsBtn">
+                  <button id="sendSMS" type="button">Send SMS</button>
+                </span>
+                <span>
+                  <button id="complete" type="submit">Complete</button>
+                </span>
               </form>
             </td>
           </tr>

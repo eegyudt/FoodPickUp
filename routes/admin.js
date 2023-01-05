@@ -35,7 +35,7 @@ adminRoutes.get('/', (req, res) => {
                 userid: order.userid,
                 name: order.name,
                 phonenumber: order.phonenumber,
-                orderedDishes: [`${order.dish} x ${order.quantity}`]
+                orderedDishes: [`${order.dish} --- quantity: ${order.quantity}`]
               };
             }
           }
@@ -55,14 +55,20 @@ adminRoutes.post('/', (req, res) => {
 
 
   console.log("admin route req.body", req.body);
-  res.json({status: 'ok'});
-  
-  // const time = req.body.timeframe;
-  // const name = "";
-  // // console.log(req.body(orderid));
-  // let message = `Hi ${name}, Your oder will be ready for pickup in ${time} minutes. Thank you for choosing to dine with us! Pizzaholic 🍕`;
-  // sendText(message, +14038164180);
-  // // $( "#sendSMSButton" ).empty();
+  res.json({ status: 'ok' });
+
+
+  // req.body { orderid: '9', phoneNumber: '4038164180', timeframe: '444' }
+
+  const time = req.body.timeframe;
+  let phoneNumber = req.body.phoneNumber;
+  phoneNumber = "+1" + phoneNumber;
+  const orderId = req.body.orderid;
+  // console.log(req.body(orderid));
+  let message = `Order number ${orderId} will be ready for pickup in ${time} minutes. Thank you for choosing to dine with us! Pizzaholic 🍕`;
+  sendText(message, phoneNumber);
+  let message2 = `Order number ${orderId} is ready for pickup now. I hope you enjoy your food! Pizzaholic 🍕`;
+  setTimeout(() => sendText(message2, phoneNumber), time * 60 * 1000);
 
 
 });
