@@ -5,6 +5,7 @@ const db = require('../db/connection');
 const foodItemQueries = require('../db/queries/foodItem');
 const selectCartItems = require('../db/selectCartItemsWithId');
 const { getUserbyId } = require("../helper");
+const pizzaholicPhoneNumber = process.env.MY_PHONE_NUMBER;
 const sendText = require('../send_sms');
 
 let pendingItemsWithQuantity = [];
@@ -112,17 +113,12 @@ checkoutRoutes.post('/payment', (req, res) => {
     }
     console.log("CHECKOUT ROUTES ITEMARRAY =========================", itemArray);
     const message = `Hi Pizzaholic 🍕, You have a new order (order number: ${orderId} --- ${itemArray}) Go to your dashboard please to manage the order`;
-    phoneNumber = +14038164180;
-    sendText(message, phoneNumber);
+
+    sendText(message, pizzaholicPhoneNumber);
     res.json({ response: "Success" });
 
-  }
-  );
-
-}
-
-
-);
+  });
+});
 
 // menuRoutes.get('/', (req, res) => {
 
