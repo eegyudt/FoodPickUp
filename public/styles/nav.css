@@ -20,12 +20,14 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.hello {
+  padding-right: 30px;
+}
 
 .rigth-nav {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end
 }
 
 .pizza {
@@ -38,21 +40,21 @@
   color:#FFFFFF;
 }
 
-.menu {
+.menuNav {
   font-size: 25px;
-  color: rgb(208, 177, 4);
+  color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
   padding-right: 10px;
 }
-.login {
+.loginNav {
   font-size: 25px;
-  color: rgb(208, 177, 4);
+  color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
   padding-right: 10px;
 }
-.reg {
+.regNav {
   font-size: 25px;
-  color: rgb(208, 177, 4);
+  color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
 }
 

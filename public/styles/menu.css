@@ -1,3 +1,7 @@
+body {
+  padding-top: 120px;
+}
+
 .menu_page {
   background: #f7f7f7;
 }
@@ -83,4 +87,28 @@
 }
 .plus:hover{
   background-color: #373739 !important;
+}
+
+.menuSubtotal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.label {
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.checkoutClearCart {
+  display: flex;
+  margin: 15px;
+  /* justify-content: space-around; */
+}
+
+#checkout {
+  margin-right: 15px;
 }

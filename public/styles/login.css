@@ -1,7 +1,9 @@
-body {
-  padding-top: 120px;
-  padding-right: 30px;
-  padding-left: 30px;
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
 }
 
 .error_message {
