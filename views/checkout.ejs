@@ -22,53 +22,50 @@
 
 <body class="bg_img">
   <%- include("partials/_header") %>
-  <div class='checkout_page'>
-    <div class='checkoutTitleContainer'>
-      <h1 id="checkout_title">Order Review</h1>
-    </div>
+    <div class='checkout_page'>
+      <div class='checkoutTitleContainer'>
+        <h1 id="checkout_title">Order Review</h1>
+      </div>
 
-    <table id="checkout">
-      <div class="checkoutContainer">
-        <% let subtotal=0; %>
-          <% for (item of pendingItemsWithQuantity){ %>
-            <div id="item_name">
-              <%= item.name %>
-            </div>
-            <div>
-              Price: $<%= item.price %>
-            </div>
-            <!-- <div>
-              Ingredients: <%= item.ingredients %>
-            </div> -->
-            <div>
-              Quantity: <%= item.quantity %>
-            </div>
-            <div>
-              <% subtotal=subtotal + item.price*item.quantity; %>
-            </div>
-            <% } %>
-              <div  class='checkoutTotal'>Total: $<%= subtotal %>
+      <table id="checkout">
+        <div class="checkoutContainer">
+          <% let subtotal=0; %>
+            <% for (item of pendingItemsWithQuantity){ %>
+              <div id="item_name">
+                <%= item.name %>
               </div>
-      </div>
-    </table>
+              <div>
+                Price: $<%= item.price %>
+              </div>
+              <div>
+                Quantity: <%= item.quantity %>
+              </div>
+              <div>
+                <% subtotal=subtotal + item.price*item.quantity; %>
+              </div>
+              <% } %>
+                <div class='checkoutTotal'>Total: $<%= subtotal %>
+                </div>
+        </div>
+      </table>
 
-    <form method="POST" action="/checkout">
+      <form method="POST" action="/checkout">
+        <div>
+          <table id="order"></table>
+        </div>
+        <div class="successMessage1"></div>
+        <div class="successMessage2"></div>
+      </form>
+    </div>
+
+    <div class="buttonContainer">
       <div>
-        <table id="order"></table>
+        <input type="button" id="submit_button" value="Submit order" />
       </div>
-      <div class="successMessage1"></div>
-      <div class="successMessage2"></div>
-    </form>
-  </div>
-
-  <div class="buttonContainer">
-    <div>
-      <input type="button" id="submit_button" value="Submit order" />
+      <div>
+        <input id="clear_cart_button" type="button" onclick="location.href='/menu';" value="Clear Cart" />
+      </div>
     </div>
-    <div>
-      <input id="clear_cart_button" type="button" onclick="location.href='/menu';" value="Clear Cart" />
-    </div>
-  </div>
 
 </body>
 

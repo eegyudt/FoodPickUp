@@ -46,12 +46,14 @@
   text-decoration: none;
   padding-right: 20px;
 }
+
 .loginNav {
   font-size: 20px;
   color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
   padding-right: 20px;
 }
+
 .regNav {
   font-size: 20px;
   color:rgba(220, 193, 111, 0.858);
@@ -68,7 +70,6 @@
   color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
   padding-right: 20px;
-
 }
 
 .loggedInNav {

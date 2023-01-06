@@ -5,7 +5,6 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-
 const foodItemQueries = require('../db/queries/foodItem');
 
 const express = require('express');
@@ -24,8 +23,5 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
-
-
-
 
 module.exports = router;

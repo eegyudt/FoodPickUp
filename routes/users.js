@@ -24,8 +24,6 @@ router.get('/', (req, res) => {
         res.render('users', templateVars);
       }
     });
-
-
   res.render('users');
 });
 

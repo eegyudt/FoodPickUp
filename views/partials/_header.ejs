@@ -3,21 +3,16 @@
     <div class="pizza">
       <h1>Pizzaholic Restaurant</h1>
     </div>
-
     <div class="loginLink">
       <div>
         <% if(user.id){ %>
-
           <div>
             <div class="rigth-nav">
               <div class="loggedInNav">
                 <a class="menuNav" href="/menu">Menu</a>
                 <a class="logoutNav" href="/logout">Logout</a>
-                <!-- <input class="logout_button" type="button" onclick="location.href='/logout';" value="Logout" /> -->
                 <a class="hello">Hello <%= user.name %></a>
               </div>
-
-              
             </div>
           </div>
           <% } else{ %>
@@ -29,6 +24,5 @@
             <% } %>
       </div>
     </div>
-
   </nav>
 </header>

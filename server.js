@@ -1,11 +1,8 @@
-// load .env data into process.env
 require('dotenv').config();
-
 const { getUserbyId } = require("./helper");
 
 
 // Web server config
-// const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
@@ -21,17 +18,7 @@ app.set('view engine', 'ejs');
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
-// app.use(
-//   '/styles',
-//   sassMiddleware({
-//     source: __dirname + '/styles',
-//     destination: __dirname + '/public/styles',
-//     isSass: false, // false => scss, true => sass
-//   })
-// );
 app.use(express.static('public'));
-
-
 
 app.use(cookieSession({
   name: 'user_id',
@@ -40,34 +27,16 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
-// // TWILIO app
-// const accountSid = process.env.TWILIO_ACCOUNT_SID;
-// const authToken = process.env.TWILIO_AUTH_TOKEN;
-// const client = require('twilio')(accountSid, authToken);
-
-// client.messages
-//   .create({
-//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-//      from: '+15017122661',
-//      to: '+15558675310'
-//    })
-//   .then(message => console.log(message.sid));
-
-
-
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const menuApiRoutes = require('./routes/menu-api');
 const adminApiRoutes = require('./routes/admin-api');
-// const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const menuRoutes = require('./routes/menu');
 const checkoutRoutes = require('./routes/checkout');
-// const orderRoutes = require('./routes/order');
 const registerRoutes = require('./routes/register');
 const loginRoutes = require('./routes/login');
-// const logoutRoutes = require('./routes/logout');
 const adminRoutes = require('./routes/admin');
 
 // Mount all resource routes
@@ -76,24 +45,14 @@ const adminRoutes = require('./routes/admin');
 app.use('/api/users', userApiRoutes);
 app.use('/api/menu', menuApiRoutes);
 app.use('/api/admin', adminApiRoutes);
-// app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/menu', menuRoutes);
 app.use('/checkout', checkoutRoutes);
-// app.use('/order', orderRoutes);
 app.use('/register', registerRoutes);
 app.use('/', loginRoutes);
-// app.use('/logout', logoutRoutes);
 app.use('/admin', adminRoutes);
 
 // Note: mount other resources here, using the same pattern above
-
-
-// import the routers
-const menuItemsRouter = require('./routes/menu_items_router');
-
-// user the routers
-app.use('/menu_items', menuItemsRouter);
 
 // Home page
 // Warning: avoid creating more routes in this file!

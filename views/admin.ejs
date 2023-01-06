@@ -15,13 +15,10 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/admin.css" />
 
-
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/admin.js"></script>
-
 
 </head>
 
@@ -46,14 +43,23 @@
       <tbody>
         <% for (let order of finalResult) { %>
           <tr class="orderDetail">
-            <td class ='orderid'><%= order.orderid %></td>
-            <td><%= order.userid %></td>
-            <td class="nameSMS"><%= order.name %></td>
-            <td class="phoneSMS"><%= order.phonenumber %></td>
-            <td><%= order.orderedDishes.join(", ") %></td>
+            <td class='orderid'>
+              <%= order.orderid %>
+            </td>
+            <td>
+              <%= order.userid %>
+            </td>
+            <td class="nameSMS">
+              <%= order.name %>
+            </td>
+            <td class="phoneSMS">
+              <%= order.phonenumber %>
+            </td>
+            <td>
+              <%= order.orderedDishes.join(", ") %></td>
             <td><%= order.orderstarted %></td>
             <td>
-              <form method="POST" action="/admin">
+              <form method=" POST" action="/admin">
                 <span class="textClass">
                   <input type="text" class="timeframe" name="timeframe" placeholder="mins" required />
                 </span>
@@ -63,10 +69,10 @@
                 <span class="complete">
                   <button class="completeBtn" type="button">Complete</button>
                 </span>
-              </form>
+                </form>
             </td>
           </tr>
-        <% } %>
+          <% } %>
       </tbody>
     </table>
 

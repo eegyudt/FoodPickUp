@@ -1,4 +1,3 @@
-
 // Client facing scripts here
 $(() => {
 
@@ -27,8 +26,6 @@ $(() => {
               </div>
             </div>  
         </td>
-
-        
         <td>
           <div class="quantityButtons">
             <div class="minus">
@@ -45,7 +42,6 @@ $(() => {
           </div>
           `).appendTo($menuList);
       }
-
     });
 });
 
@@ -63,8 +59,6 @@ const qtyAdd = function(element) {
   count++;
   $(`#qty-${index}`).first().val(count);
   let price = parseInt($(`#price-${index}`).text());
-
-  console.log("price>>>", $(`#price-${index}`).text());
   priceCalculate(price);
 };
 

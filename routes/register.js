@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const db = require('../db/connection');
 const cookieSession = require('cookie-session');
-
 const { getUserbyId } = require("../helper");
 
 router.use(cookieSession({
@@ -13,35 +12,20 @@ router.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000
 }));
 
-// router.get('/', (req, res) => {
-//   res.render('register');
-// });
-
 router.get('/', (req, res) => {
-
   const userId = req.session['user_id'];
   if (userId) {
     return res.redirect('/menu');
   }
   getUserbyId(userId)
     .then((user) => {
-
       const templateVars = { user };
       res.render('register', templateVars);
-
     });
 });
 
 router.post('/', async (req, res) => {
   let { name, email, phone, password } = req.body;
-
-  console.log({
-    name,
-    email,
-    phone,
-    password
-  });
-
   let errors = [];
 
   if (!name || !email || !phone || !password) {
@@ -56,14 +40,12 @@ router.post('/', async (req, res) => {
     res.render('register', { errors });
   } else {
     const hashedPassword = await bcrypt.hashSync(password, 10);
-    console.log(hashedPassword);
 
     db.query(
       `SELECT * FROM users WHERE email = $1`, [email], (err, results) => {
         if (err) {
           throw err;
         }
-        console.log(results.rows);
 
         if (results.rows.length > 0) {
           const userId = req.session['user_id'];
@@ -81,7 +63,6 @@ router.post('/', async (req, res) => {
               if (err) {
                 throw err;
               }
-              console.log(results.rows);
               res.redirect('/login');
             }
           );

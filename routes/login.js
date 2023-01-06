@@ -5,28 +5,20 @@ const db = require('../db/connection');
 const { getUserbyId } = require("../helper");
 
 router.get('/login', (req, res) => {
-
   const userId = req.session['user_id'];
   if (userId) {
     return res.redirect('/menu');
   }
   getUserbyId(userId)
     .then((user) => {
-
       const templateVars = { user };
       res.render('login', templateVars);
-
     });
 });
 
 router.post('/login', (req, res) => {
   const email = req.body.email;
   const pw = req.body.password;
-  // let name = '';
-  console.log({
-    email,
-    pw
-  });
 
   let errors = [];
 
@@ -42,8 +34,6 @@ router.post('/login', (req, res) => {
     if (err) {
       throw err;
     }
-    console.log("results.rows[0]--------------", results.rows[0]);
-
 
     if (!results.rows) {
       return res.status(400).send(`<h1>You haven't registered this email!<h1> <a href ="/register">Back to Registration</a>`);
@@ -58,18 +48,13 @@ router.post('/login', (req, res) => {
       const user_id = results.rows[0].id;
       req.session.user_id = user_id;
       return res.redirect('/admin');
-
     }
 
     const user_id = results.rows[0].id;
     req.session.user_id = user_id;
     res.redirect('/menu');
-    // return name;
-  }
-  );
-}
-);
-
+  });
+});
 
 router.get('/logout', (req, res) => {
   req.session = null;

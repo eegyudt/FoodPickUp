@@ -53,11 +53,8 @@
   width: 2em;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
-  /* align-items: center; */
   padding-left: 30px;
   padding-right: 30px;
-
 }
 
 #clear_cart_button {
@@ -81,7 +78,6 @@
   font-size: 15px;
 }
 
-
 .buttonContainer {
   transition: filter 500ms;
 }
@@ -95,15 +91,6 @@
   transition: filter 250ms;
   filter: brightness(140%);
 }
-/* 
-.bg_img {
-  background: url("/images/phoneBG.png") fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: rgb(0, 0, 0, 0.8);
-  opacity: 0.7;
-  filter:brightness(120%)
-} */
 
 .bg_img {
   background: url("/images/checkoutImgMirrored.jpg") fixed;

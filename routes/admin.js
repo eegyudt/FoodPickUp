@@ -14,18 +14,14 @@ adminRoutes.get('/', (req, res) => {
 
   return getUserbyId(userId)
     .then((user) => {
-      console.log("ADMIN page user =============================", user);
       if (!user.admin) {
         return res.redirect('/menu');
       }
       foodItemQueries.getPendingOrders()
         .then(orders => {
-          // res.json({ orders });
-
           const result = {};
 
           for (let order of orders) {
-
             if (result[order.orderid]) {
               result[order.orderid].orderedDishes.push(`${order.dish} x ${order.quantity}`);
             } else {
@@ -50,34 +46,20 @@ adminRoutes.get('/', (req, res) => {
     });
 });
 
-
-
 adminRoutes.post('/', (req, res) => {
-
-
-
   res.json({ status: 'ok' });
-
-
-  // req.body { orderid: '9', phoneNumber: '4038164180', timeframe: '444' }
-
   const time = req.body.timeframe;
   let phoneNumber = req.body.phoneNumber;
   phoneNumber = "+1" + phoneNumber;
   const orderId = req.body.orderid;
-  // console.log(req.body(orderid));
   let message = `Order number ${orderId} will be ready for pickup in ${time} minutes. Thank you for choosing to dine with us! Pizzaholic 🍕`;
   sendText(message, phoneNumber);
   let message2 = `Order number ${orderId} is ready for pickup now. I hope you enjoy your food! Pizzaholic 🍕`;
   setTimeout(() => sendText(message2, phoneNumber), time * 60 * 1000);
-
 });
 
 adminRoutes.post('/orderstatus', (req, res) => {
   const orderId = req.body.orderid;
-
-  console.log("orderId----->", orderId);
-  // const orderId = 1;
   db.query(`UPDATE orders SET order_status = false WHERE id =$1;`, [orderId], (err, results) => {
     if (err) {
       throw err;
@@ -85,10 +67,7 @@ adminRoutes.post('/orderstatus', (req, res) => {
     res.sendStatus(204);
   }
   );
-
   return;
 });
 
 module.exports = adminRoutes;
-
-
