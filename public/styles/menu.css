@@ -21,6 +21,11 @@ body {
   justify-content: start;
   align-items: center;
 } */
+.itemTable {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
 
 .food_name {
   font-size: 23px;

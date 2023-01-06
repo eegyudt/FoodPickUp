@@ -15,22 +15,26 @@ $(() => {
         const item = foodItem[index];
         $(`<tr class="menu">`).append(`
         <td>
-        <div><img class="food_photo" src="${item.food_photo_url}"<div>
-        <div class="food_name">${item.name}</div>
-        <div class="ingredients">${item.ingredients}</div>
+          <div class="itemTable"
+            <div><img class="food_photo" src="${item.food_photo_url}"<div>
+            <div class="food_name">${item.name}</div>
+            <div class="ingredients">${item.ingredients}</div>
+          <div>
         </td>
         <td class="price" id=price-${index}>${item.price}</td>
-        <td><div class="buttons">
-        <div class="minus">
-        <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
-        </div>
-        <div class="count">
-        <input readonly name="${item.id}" id="qty-${index}" value="0"/>
-        </div>
-        <div class="plus">
-        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
-        </div>
-        </div></td>`).appendTo($menuList);
+        <td>
+          <div class="buttons">
+            <div class="minus">
+              <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
+            </div>
+            <div class="count">
+              <input readonly name="${item.id}" id="qty-${index}" value="0"/>
+            </div>
+            <div class="plus">
+              <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+            </div>
+          </div>
+        </td>`).appendTo($menuList);
       }
 
     });
