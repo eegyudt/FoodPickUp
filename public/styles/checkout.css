@@ -80,4 +80,5 @@
   background-repeat: no-repeat;
   background-color: rgb(0, 0, 0, 0.8);
   opacity:0.7;
+  filter: brightness(150%);
 }
