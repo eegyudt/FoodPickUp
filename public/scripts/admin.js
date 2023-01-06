@@ -49,6 +49,8 @@ $(() => {
         complete.empty();
 
         complete.append(`<div class="orderComplete">Order complete</div>`);
+        $('.orderComplete').css('background', 'rgb(6, 98, 121)');
+        $('.orderComplete').css('color', 'white');
       });
   });
 
