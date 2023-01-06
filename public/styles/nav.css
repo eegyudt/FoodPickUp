@@ -21,7 +21,7 @@
 }
 
 .hello {
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
 .rigth-nav {
@@ -41,23 +41,45 @@
 }
 
 .menuNav {
-  font-size: 25px;
+  font-size: 20px;
   color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 .loginNav {
-  font-size: 25px;
+  font-size: 20px;
   color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
-  padding-right: 10px;
+  padding-right: 20px;
 }
 .regNav {
-  font-size: 25px;
+  font-size: 20px;
   color:rgba(220, 193, 111, 0.858);
   text-decoration: none;
 }
 
 .loginLink {
   padding-right: 100px;
+}
+
+
+.logoutNav {
+  font-size: 20px;
+  color:rgba(220, 193, 111, 0.858);
+  text-decoration: none;
+  padding-right: 20px;
+
+}
+
+.loggedInNav {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  color:rgba(220, 193, 111, 0.858);
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+  .logout_button :hover{
+    color: #1eaedb;
 }

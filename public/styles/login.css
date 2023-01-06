@@ -32,3 +32,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.loginBtn {
+  color: white !important;
+}
+
+.registerLink {
+  color: white !important;
+}

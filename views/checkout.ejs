@@ -3,37 +3,32 @@
 
 <head>
   <title>Checkout</title>
-
+  <p style="background-image: url('/images/checkoutImg.jpeg');"></p>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <!-- <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" /> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/checkout.css" />
   <link rel="stylesheet" href="/styles/nav.css" />
-
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/checkout.js"></script>
 
-
 </head>
 
-<body class="bg_img"></body>
+<body class="bg_img">
   <%- include("partials/_header") %>
   <div class='checkout_page'>
-    <div>
-      <h1 id="checkout_title">Checkout</h1>
+    <div class='checkoutTitleContainer'>
+      <h1 id="checkout_title">Order Review</h1>
     </div>
 
     <table id="checkout">
-      <div>
+      <div class="checkoutContainer">
         <% let subtotal=0; %>
           <% for (item of pendingItemsWithQuantity){ %>
             <div id="item_name">
@@ -42,17 +37,17 @@
             <div>
               Price: $<%= item.price %>
             </div>
-            <div>
+            <!-- <div>
               Ingredients: <%= item.ingredients %>
-            </div>
+            </div> -->
             <div>
               Quantity: <%= item.quantity %>
             </div>
-            <label>
+            <div>
               <% subtotal=subtotal + item.price*item.quantity; %>
-            </label>
+            </div>
             <% } %>
-              <div>Total: $<%= subtotal %>
+              <div  class='checkoutTotal'>Total: $<%= subtotal %>
               </div>
       </div>
     </table>
