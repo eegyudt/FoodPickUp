@@ -13,7 +13,8 @@ const sendText = (message, phoneNumber) => {
       from: twilioNumber,
       to: phoneNumber
     })
-    .then(message => console.log(message.sid));
+    .then(message => console.log(message.sid))
+    .catch(err => console.log("send txt error ---->", err));
 };
 
 // sendText(textMessage, myNumber);

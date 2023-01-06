@@ -21,9 +21,15 @@ $(() => {
         </td>
         <td class="price" id=price-${index}>${item.price}</td>
         <td><div class="buttons">
-        <input type="button" class="minus"value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
+        <span class="minus">
+        <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
+        </span>
+        <span class="count">
         <input readonly name="${item.id}" class="count" id="qty-${index}" value="0"/>
+        </span>
+        <span class="plus">
         <input type="button" class="plus" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+        </span>
         </div></td>`).appendTo($menuList);
       }
 
@@ -44,7 +50,7 @@ const qtyAdd = function(element) {
   count++;
   $(`#qty-${index}`).first().val(count);
   let price = parseInt($(`#price-${index}`).text());
-  
+
   console.log("price>>>", $(`#price-${index}`).text());
   priceCalculate(price);
   };

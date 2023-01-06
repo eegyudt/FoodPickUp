@@ -43,6 +43,7 @@
   border-radius: 25px;
 }
 .buttons {
+  display: flex;
   text-align: center;
 }
 
@@ -54,7 +55,7 @@
   font-weight: 500;
   line-height: 30px;
   padding: 0 2px;
-  min-width: 35px;
+  width: 35px;
   text-align: center;
 }
 
