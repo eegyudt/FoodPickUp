@@ -21,15 +21,15 @@ $(() => {
         </td>
         <td class="price" id=price-${index}>${item.price}</td>
         <td><div class="buttons">
-        <span class="minus">
+        <div class="minus">
         <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
-        </span>
-        <span class="count">
-        <input readonly name="${item.id}" class="count" id="qty-${index}" value="0"/>
-        </span>
-        <span class="plus">
-        <input type="button" class="plus" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
-        </span>
+        </div>
+        <div class="count">
+        <input readonly name="${item.id}" id="qty-${index}" value="0"/>
+        </div>
+        <div class="plus">
+        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+        </div>
         </div></td>`).appendTo($menuList);
       }
 
