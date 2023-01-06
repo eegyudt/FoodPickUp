@@ -14,16 +14,6 @@
   border-radius: 30px
 }
 
-/* .navbar {
-  justify-content: space-between;
-} */
-
-.right_nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 /* .logout_button {
   color: rgb(230, 10, 90);
   font-weight: 600;

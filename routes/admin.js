@@ -82,11 +82,11 @@ adminRoutes.post('/orderstatus', (req, res) => {
     if (err) {
       throw err;
     }
-    res.sendStatus(204)
+    res.sendStatus(204);
   }
   );
 
-return;
+  return;
 });
 
 module.exports = adminRoutes;

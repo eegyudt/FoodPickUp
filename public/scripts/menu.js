@@ -13,14 +13,14 @@ $(() => {
       const foodItem = response.foodItem;
       for (const index in foodItem) {
         const item = foodItem[index];
-        $(`<tr class="menu">`).append(`
-        <td>
+        $(`<div class="menu">`).append(`
+        <div class=food_container>
         <div><img class="food_photo" src="${item.food_photo_url}"<div>
         <div class="food_name">${item.name}</div>
         <div class="ingredients">${item.ingredients}</div>
-        </td>
-        <td class="price" id=price-${index}>${item.price}</td>
-        <td><div class="buttons">
+        </div>
+        <div class="price" id=price-${index}>${item.price}</div>
+        <div><div class="buttons">
         <span class="minus">
         <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
         </span>
@@ -30,7 +30,7 @@ $(() => {
         <span class="plus">
         <input type="button" class="plus" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
         </span>
-        </div></td>`).appendTo($menuList);
+        </div></div>`).appendTo($menuList);
       }
 
     });
