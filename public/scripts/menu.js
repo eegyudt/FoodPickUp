@@ -18,19 +18,19 @@ $(() => {
         <div><img class="food_photo" src="${item.food_photo_url}"<div>
         <div class="food_name">${item.name}</div>
         <div class="ingredients">${item.ingredients}</div>
-        </div>
-        <div class="price" id=price-${index}>${item.price}</div>
-        <div><div class="buttons">
-        <span class="minus">
+        </td>
+        <td class="price" id=price-${index}>${item.price}</td>
+        <td><div class="buttons">
+        <div class="minus">
         <input type="button" value='-' id="qtyMin-${index}" onclick="qtyMin(this)"/>
-        </span>
-        <span class="count">
-        <input readonly name="${item.id}" class="count" id="qty-${index}" value="0"/>
-        </span>
-        <span class="plus">
-        <input type="button" class="plus" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
-        </span>
-        </div></div>`).appendTo($menuList);
+        </div>
+        <div class="count">
+        <input readonly name="${item.id}" id="qty-${index}" value="0"/>
+        </div>
+        <div class="plus">
+        <input type="button" value="+" id="qtyAdd-${index}" onclick="qtyAdd(this)"/>
+        </div>
+        </div></td>`).appendTo($menuList);
       }
 
     });

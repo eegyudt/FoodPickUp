@@ -8,13 +8,15 @@
   width: 100vw;
   margin: 0;
   color: #FFFFFF;
-  background-color: #8aa140;
-  height: 50px;
+  background-color: #171717;
+  opacity: 0.9;
+  height: 80px;
   font-family: Bungee, sans-serif;
   padding-bottom: 15px;
   padding-top: 26px;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -24,4 +26,34 @@
   justify-content: flex-end
 }
 
+.pizza {
+  display: flex;
+  justify-content: left;
+  font-family: "poppins", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color:#FFFFFF;
+}
 
+.menu {
+  font-size: 25px;
+  color: rgb(208, 177, 4);
+  text-decoration: none;
+  padding-right: 10px;
+}
+.login {
+  font-size: 25px;
+  color: rgb(208, 177, 4);
+  text-decoration: none;
+  padding-right: 10px;
+}
+.reg {
+  font-size: 25px;
+  color: rgb(208, 177, 4);
+  text-decoration: none;
+}
+
+.loginLink {
+  padding-right: 100px;
+}
